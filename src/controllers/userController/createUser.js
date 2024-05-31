@@ -1,4 +1,4 @@
-const db=require('../../db/knex');
+
 const { findOrCreate } = require('../../utils/findOrCreate');
 
 const createUser=async({username,email,password})=>{

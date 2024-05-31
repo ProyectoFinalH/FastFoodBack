@@ -1,7 +1,12 @@
 const {Router}=require("express");
-const userRoutes = require("./userRoutes");
+const userRouter = require("./userRoutes");
+const menuRouter = require("./menuRoutes");
+const itemsMenuRouter = require("./itemsMenuRoutes");
+
 const mainRoutes=Router();
 
-mainRoutes.use("/users",userRoutes);
+mainRoutes.use("/users",userRouter);
+mainRoutes.use("/menus",menuRouter);
+mainRoutes.use("/menuitems",itemsMenuRouter);
 
 module.exports=mainRoutes;
