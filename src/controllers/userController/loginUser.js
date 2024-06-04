@@ -13,8 +13,9 @@ const loginUser=async({email,password})=>{
     const infoDB=await db('users').where({email:email}).first();
     if(infoDB){
         if(infoDB.password===password){
-            const token=generateToken(infoDB);
-            return token;
+            // const token=generateToken(infoDB);
+            // return token;
+            return true;
         }else{
             return false;
         }
