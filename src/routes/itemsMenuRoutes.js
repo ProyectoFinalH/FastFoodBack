@@ -10,7 +10,10 @@ const itemsMenuRouter = Router();
 
 
 itemsMenuRouter.get("/search",searchItemsMenuHandler);
-itemsMenuRouter.get("/",ensureAuthenticated,getItemsMenuHandler);
+
+//itemsMenuRouter.get("/",ensureAuthenticated,getItemsMenuHandler);
+itemsMenuRouter.get("/",getItemsMenuHandler);
+
 itemsMenuRouter.get("/:id",getItemDetailMenuHandler);
 // itemsMenuRouter.put("/:id",putItemMenuHandler);
 itemsMenuRouter.post("/create", parser.single('image'), createItemMenuHandler);
