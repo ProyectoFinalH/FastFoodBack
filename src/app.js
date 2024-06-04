@@ -20,15 +20,15 @@ app.use(express.json());//para que el server pueda leer json
 
 app.use(morgan("dev"));//para ver mensajes de los req y status en la consola
 
-// app.use(session({
-//    secret: process.env.JWT_SECRET,
-//    resave: false,
-//    saveUninitialized: false,
-//  }));
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(session({
+   secret: process.env.JWT_SECRET,
+   resave: false,
+   saveUninitialized: false,
+ }));
+app.use(passport.initialize());
+app.use(passport.session());
 
-// require('./config/googleAuth');
+require('./config/googleAuth');
 
 
 app.use(mainRoutes);//aqui inicia el router principal
