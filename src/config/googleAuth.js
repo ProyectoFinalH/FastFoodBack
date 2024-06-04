@@ -1,3 +1,4 @@
+
  const passport = require('passport');
  const GoogleStrategy = require('passport-google-oauth20').Strategy;
  const knex = require('../db/knex');
@@ -43,3 +44,4 @@
  });
 
 module.exports = passport;
+

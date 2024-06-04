@@ -1,5 +1,6 @@
 const { createItemMenu } = require("../../controllers/itemsMenuController/createItemMenu");
 
+
 const createItemMenuHandler = async (req, res) => {
     const { menu_id, category_id, name, description, price } = req.body;
 
@@ -22,3 +23,4 @@ const createItemMenuHandler = async (req, res) => {
 module.exports = {
     createItemMenuHandler
 };
+
