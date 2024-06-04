@@ -1,0 +1,21 @@
+const { createMenu } = require("../../controllers/menuController/createMenu");
+
+const createMenuHandler=async(req,res)=>{
+
+    const{restaurant_id,name}=req.body;
+
+    try {
+        const response=await createMenu({restaurant_id,name});
+        response===false
+        ?res.status(400).json("Ya existe un menu con ese nombre")
+        :res.status(200).json(response)
+    } catch (error) {
+        res.status(400).json({error:error.message});
+    }
+    
+
+}
+
+module.exports={
+    createMenuHandler
+}
