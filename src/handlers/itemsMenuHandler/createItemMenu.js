@@ -8,10 +8,10 @@ const createItemMenuHandler = async (req, res) => {
         return res.status(400).json({ message: 'No file uploaded' });
     }
 
-    const imageUrl = req.file.path;
+    //const imageUrl = req.file.path;
 
     try {
-        const response = await createItemMenu({ menu_id, category_id, name, description, price, image_url: imageUrl });
+        const response = await createItemMenu({ menu_id, category_id, name, description, price, image_url});
         response === false
             ? res.status(400).json("Ya existe un item con ese nombre")
             : res.status(200).json(response);

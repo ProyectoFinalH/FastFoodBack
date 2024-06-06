@@ -1,6 +1,6 @@
 const db = require("../db/knex");
 
-const findAndUpdate=async(tableName,findParams,updateParams)=>{
+const findOrUpdate=async(tableName,findParams,updateParams)=>{
     
     return db.transaction(async (trx) => {
 
@@ -17,4 +17,4 @@ const findAndUpdate=async(tableName,findParams,updateParams)=>{
 
 }
 
-module.exports={findAndUpdate}
+module.exports={findOrUpdate}

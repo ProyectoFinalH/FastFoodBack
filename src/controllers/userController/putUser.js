@@ -1,6 +1,6 @@
 
-const { findAndUpdate } = require("../../utils/findAndUpdate");
-const { findOrCreate } = require("../../utils/findOrCreate");
+const { findOrUpdate } = require("../../utils/findOrUpdate");
+//const { findOrCreate } = require("../../utils/findOrCreate");
 const { getDetailUser } = require("./getDetailUser");
 
 const putUser=async({id,username,email,password})=>{
@@ -18,7 +18,7 @@ const putUser=async({id,username,email,password})=>{
     // }
     
     
-    const infoDB=await findAndUpdate('users',{id:id},User);
+    const infoDB=await findOrUpdate('users',{id:id},User);
    
     if(infoDB==true){
         
