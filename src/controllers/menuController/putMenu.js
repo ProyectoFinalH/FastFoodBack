@@ -10,13 +10,10 @@ const putMenu=async({id,name})=>{
         
     }
     
-    const infoDB=await findOrUpdate('menus',{id:id},Menu);
+    const {record,updated}=await findOrUpdate('menus',{id:id},{name:name},Menu);
    
-    if(infoDB==true){
-        
-        const menuUpdate=await getDetailMenu(id);
-        
-        return menuUpdate;
+    if(updated==true){
+        return record;
     }else{
         return false
     }
