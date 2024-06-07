@@ -4,9 +4,11 @@ const menuRouter = require("./menuRoutes");
 const itemsMenuRouter = require("./itemsMenuRoutes");
 const categoryRouter = require("./categoryRoutes");
 const commentRouter = require("./commentRoutes");
+const restaurantRouter = require("./restaurantRoutes");
+
 const jwt=require('jsonwebtoken')
 require("dotenv").config()
-const passport=require('passport')
+const passport=require('passport');
 
 const mainRoutes=Router();
 
@@ -24,5 +26,7 @@ mainRoutes.use("/menus",menuRouter);
 mainRoutes.use("/menuitems",itemsMenuRouter);
 mainRoutes.use("/categories",categoryRouter);
 mainRoutes.use("/comments",commentRouter);
+mainRoutes.use("/restaurants",restaurantRouter);
+
 
 module.exports=mainRoutes;

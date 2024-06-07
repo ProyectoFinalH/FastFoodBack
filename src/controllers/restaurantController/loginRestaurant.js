@@ -8,9 +8,9 @@ function generateToken(user) {
     });
   }
 
-const loginUser=async({email,password})=>{
+const loginRestaurant=async({email,password})=>{
 
-    const infoDB=await db('users')
+    const infoDB=await db('restaurants')
     .where({email:email})
     .andWhere({active:true})
     .first();
@@ -31,4 +31,4 @@ const loginUser=async({email,password})=>{
 
 }
 
-module.exports={loginUser}
+module.exports={loginRestaurant}
