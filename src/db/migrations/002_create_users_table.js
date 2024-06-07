@@ -6,6 +6,7 @@ exports.up = function(knex) {
     table.string('password').notNullable();
     table.string('google_id').unique();
     table.integer('role_id').unsigned().references('id').inTable('roles');
+    table.boolean('active');
   });
 };
 

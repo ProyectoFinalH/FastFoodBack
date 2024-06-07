@@ -1,7 +1,6 @@
 
-const { findAndUpdate } = require("../../utils/findAndUpdate");
-const { findOrCreate } = require("../../utils/findOrCreate");
-const { getDetailUser } = require("./getDetailUser");
+const { findOrUpdate } = require("../../utils/findOrUpdate");
+
 
 const putUser=async({id,username,email,password})=>{
 
@@ -11,20 +10,11 @@ const putUser=async({id,username,email,password})=>{
         password:password
     }
 
-    //PARA VALIDAR QUE EL CORREO INGRESADO NO EXISTE EN LA BD-->CREAR UNA FUNCION QUE BUSQUE ELEMENTOS DUPLICADOS
-    // const {record,created}=await findOrCreate('users',{email:email},User)
-    // if(!created){
-    //     return false;
-    // }
     
-    
-    const infoDB=await findAndUpdate('users',{id:id},User);
+    const {record,updated}=await findOrUpdate('users',{id:id},{email:email},User);
    
-    if(infoDB==true){
-        
-        const userUpdate=await getDetailUser(id);
-        
-        return userUpdate;
+    if(updated==true){
+        return record;
     }else{
         return false
     }

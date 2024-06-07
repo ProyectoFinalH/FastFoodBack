@@ -1,10 +1,11 @@
-const { loginUser } = require("../../controllers/userController/loginUser");
+const { loginRestaurant } = require("../../controllers/restaurantController/loginRestaurant");
 
-const loginUserHandler=async(req,res)=>{
+
+const loginRestaurantHandler=async(req,res)=>{
 
     const {email,password}=req.body;
     try {
-        const response=await loginUser({email,password});
+        const response=await loginRestaurant({email,password});
         response===false
         ?res.status(400).json("Usuario o password incorrecto")
         :res.status(200).json(response);
@@ -14,4 +15,4 @@ const loginUserHandler=async(req,res)=>{
 
 }
 
-module.exports={loginUserHandler}
+module.exports={loginRestaurantHandler}

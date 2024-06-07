@@ -1,8 +1,8 @@
 const db=require('../../db/knex');
 
-const getDetailUser=async(id)=>{
+const getDetailRestaurant=async(id)=>{
 
-    const infoDB=await db('users')
+    const infoDB=await db('restaurants')
     .where({id:id})
     .andWhere({active:true})
     .first();
@@ -11,5 +11,5 @@ const getDetailUser=async(id)=>{
 };
 
 module.exports={
-    getDetailUser
+    getDetailRestaurant
 }
