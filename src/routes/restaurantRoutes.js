@@ -3,6 +3,7 @@ const { getRestaurantsHandler } = require("../handlers/restaurantHandler/getRest
 const { createRestaurantHandler } = require("../handlers/restaurantHandler/createRestaurant");
 const { getDetailRestaurantHandler } = require("../handlers/restaurantHandler/getDetailRestaurant");
 const { loginRestaurantHandler } = require("../handlers/restaurantHandler/loginRestaurant");
+const { putRestaurantHandler } = require("../handlers/restaurantHandler/putRestaurant");
 
 const restaurantRouter=Router();
 
@@ -10,7 +11,7 @@ const restaurantRouter=Router();
 //restaurantRouter.get("/loginGoogle",passport.authenticate('google',{scope:['profile','email']}));
 restaurantRouter.get("/",getRestaurantsHandler);
 restaurantRouter.get("/:id",getDetailRestaurantHandler);
-// restaurantRouter.put("/:id",putRestaurantHandler);
+restaurantRouter.put("/:id",putRestaurantHandler);
 restaurantRouter.post("/create",createRestaurantHandler);
 restaurantRouter.post("/login",loginRestaurantHandler);
 // restaurantRouter.put("/delete/:id",deleteRestaurantHandler);
