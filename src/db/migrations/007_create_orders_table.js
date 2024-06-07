@@ -5,6 +5,7 @@ exports.up = function(knex) {
     table.integer('restaurant_id').unsigned().references('id').inTable('restaurants');
     table.decimal('total_price', 10, 2).notNullable();
     table.timestamp('order_date').defaultTo(knex.fn.now());
+    table.boolean('active');
   });
 };
 
