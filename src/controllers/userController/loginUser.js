@@ -10,7 +10,10 @@ function generateToken(user) {
 
 const loginUser=async({email,password})=>{
 
-    const infoDB=await db('users').where({email:email}).first();
+    const infoDB=await db('users')
+    .where({email:email})
+    .andWhere({active:true})
+    .first();
     if(infoDB){
         if(infoDB.password===password){
             // const token=generateToken(infoDB);

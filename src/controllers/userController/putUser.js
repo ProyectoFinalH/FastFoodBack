@@ -1,6 +1,6 @@
 
 const { findOrUpdate } = require("../../utils/findOrUpdate");
-const { getDetailUser } = require("./getDetailUser");
+
 
 const putUser=async({id,username,email,password})=>{
 
@@ -9,6 +9,7 @@ const putUser=async({id,username,email,password})=>{
         email:email,
         password:password
     }
+
     
     const {record,updated}=await findOrUpdate('users',{id:id},{email:email},User);
    

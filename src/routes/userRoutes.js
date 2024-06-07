@@ -5,25 +5,22 @@ const { getDetailUserHandler } = require("../handlers/userHandler/getDetailUser"
 const { putUserHandler } = require("../handlers/userHandler/putUser");
 const { loginUserHandler } = require("../handlers/userHandler/loginUser");
 const { loginGoogleHandler } = require("../handlers/userHandler/loginGoogle");
-const passport=require('passport')
+
+const passport=require('passport');
+const { deleteUserHandler } = require("../handlers/userHandler/deleteUser");
+const { restoreUserHandler } = require("../handlers/userHandler/restoreUser");
 const userRouter=Router();
 
 
 userRouter.get("/loginGoogle",passport.authenticate('google',{scope:['profile','email']}));
-
-// userRouter.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/' }), (req, res) => {
-//     const token = jwt.sign({ id: req.user.id, email: req.user.email, role_id: req.user.role_id }, process.env.JWT_SECRET, {
-//       expiresIn: '1h',
-//     });
-//     res.redirect(`/?token=${token}`);
-//   });
-
 userRouter.get("/",getUsersHandler);
 userRouter.get("/:id",getDetailUserHandler);
 userRouter.put("/:id",putUserHandler);
 userRouter.post("/create",createUserHandler);
 userRouter.post("/login",loginUserHandler);
-// userRouter.delete("/:id",deleteUserHandler);
+userRouter.put("/delete/:id",deleteUserHandler);
+userRouter.put("/restore/:id",restoreUserHandler);
+
 
 
 module.exports=userRouter;
