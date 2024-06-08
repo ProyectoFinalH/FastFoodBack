@@ -15,7 +15,7 @@ const loginGoogle = async (token) => {
         email: email,
         google_id: uid,
         role_id: 2, // Ajusta según tus necesidades
-        password: '12345' // Proporciona un valor por defecto para password si es necesario
+        password: '123456' // Proporciona un valor por defecto para password si es necesario
       };
       const [userId] = await db('users').insert(newUser).returning('id');
       user = { ...newUser, id: userId[0] }; // Asegúrate de obtener solo el valor del id
