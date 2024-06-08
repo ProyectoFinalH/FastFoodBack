@@ -4,7 +4,6 @@ const passport = require('./config/googleAuth'); // Asegúrate de que la ruta se
 const morgan = require("morgan");
 const mainRoutes = require("./routes/mainRoutes");
 const itemsMenuRoutes = require("./routes/itemsMenuRoutes"); // Asegúrate de que la ruta sea correcta
-const orderRoutes = require("./routes/ordersRoutes");
 const userRoutes = require("./routes/userRoutes"); // Importa las rutas de usuario
 const cors = require("cors");
 const app = express();
@@ -33,7 +32,6 @@ require('./config/googleAuth');
 
 app.use(mainRoutes); // Aquí inicia el router principal
 app.use('/api/menuitems', itemsMenuRoutes); // Ruta para manejar ítems del menú
-app.use('/api/orders', orderRoutes); // Ruta para manejar órdenes
 app.use('/api/users', userRoutes); // Ruta para manejar usuarios y autenticación
 
 module.exports = app;
