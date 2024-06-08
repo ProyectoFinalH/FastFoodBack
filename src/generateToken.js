@@ -9,7 +9,7 @@ admin.initializeApp({
   }),
 });
 
-const email = 'miller7villa@gmail.com'; // Usa un correo electrónico de prueba
+const email = 'millerj5villa@gmail.com'; // Usa un correo electrónico de prueba
 
 const generateToken = async () => {
   try {

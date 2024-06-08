@@ -1,4 +1,5 @@
 const { Router } = require("express");
+const passport = require('../config/googleAuth');
 const { getUsersHandler } = require("../handlers/userHandler/getUsers");
 const { createUserHandler } = require("../handlers/userHandler/createUser");
 const { getDetailUserHandler } = require("../handlers/userHandler/getDetailUser");
@@ -10,7 +11,19 @@ const { restoreUserHandler } = require("../handlers/userHandler/restoreUser");
 
 const userRouter = Router();
 
+// Rutas de autenticación con Google
+userRouter.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+userRouter.get('/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/' }),
+  (req, res) => {
+    res.redirect('/'); // Redirige a la página de inicio o a otra página después de la autenticación exitosa
+  }
+);
+
+// Ruta para manejar el login de Google desde el frontend
 userRouter.post("/auth/google", loginGoogleHandler);
+
+// Otras rutas de usuario
 userRouter.get("/", getUsersHandler);
 userRouter.get("/:id", getDetailUserHandler);
 userRouter.put("/:id", putUserHandler);
@@ -20,3 +33,4 @@ userRouter.put("/delete/:id", deleteUserHandler);
 userRouter.put("/restore/:id", restoreUserHandler);
 
 module.exports = userRouter;
+

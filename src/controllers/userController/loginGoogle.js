@@ -4,14 +4,21 @@ const db = require("../../db/knex");
 const loginGoogle = async (token) => {
   try {
     const decodedToken = await admin.auth().verifyIdToken(token);
-    const { email } = decodedToken;
+    const { email, name, picture, uid } = decodedToken;
 
-    let user = await db('users').where({ email }).first();
+    let user = await db('users').where({ google_id: uid }).first();
 
     if (!user) {
-      // Si el usuario no existe, crear uno nuevo
-      const [newUser] = await db('users').insert({ email }).returning('*');
-      user = newUser;
+      // Si el usuario no existe, crearlo
+      const newUser = {
+        username: name,
+        email: email,
+        google_id: uid,
+        role_id: 2, // Ajusta según tus necesidades
+        password: '12345' // Proporciona un valor por defecto para password si es necesario
+      };
+      const [userId] = await db('users').insert(newUser).returning('id');
+      user = { ...newUser, id: userId[0] }; // Asegúrate de obtener solo el valor del id
     }
 
     // Devolver el usuario autenticado
@@ -22,3 +29,4 @@ const loginGoogle = async (token) => {
 };
 
 module.exports = { loginGoogle };
+

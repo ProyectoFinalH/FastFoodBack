@@ -5,7 +5,7 @@ const knex = require('../db/knex');
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: `${process.env.BASE_URL}/auth/google/callback`
+  callbackURL: `${process.env.BASE_URL}/api/users/auth/google/callback`
 },
 async (token, tokenSecret, profile, done) => {
   try {
