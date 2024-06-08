@@ -1,3 +1,5 @@
+const { putRestaurant } = require("../../controllers/restaurantController/putRestaurant");
+
 const putRestaurantHandler=async(req,res)=>{
 
     const {id}=req.params;
@@ -5,7 +7,7 @@ const putRestaurantHandler=async(req,res)=>{
 
     try {
         
-        const response=await ({id,name,email,password,address,phone,description,image_url});
+        const response=await putRestaurant({id,name,email,password,address,phone,description,image_url});
         response===false
         ?res.status(400).json("Ya existe un restaurant con este correo o hubo un error al actualizarlo")
         :res.status(200).json(response)

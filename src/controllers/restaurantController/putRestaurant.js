@@ -15,6 +15,7 @@ const putRestaurant=async({id,name,email,password,address,phone,description,imag
 
     
     const {record,updated}=await findOrUpdate('restaurants',{id:id},{email:email},restaurant);
+
    
     if(updated==true){
         return record;

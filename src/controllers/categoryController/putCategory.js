@@ -1,13 +1,12 @@
 const { findOrUpdate } = require("../../utils/findOrUpdate");
 
-const putMenu=async({id,name})=>{
+const putCategory=async({id,name})=>{
 
-    const Menu={
-        name:name,
-        
+    const category={
+        name:name,    
     }
     
-    const {record,updated}=await findOrUpdate('menus',{id:id},{name:name},Menu);
+    const {record,updated}=await findOrUpdate('categories',{id:id},{name:name},category);
    
     if(updated==true){
         return record;
@@ -18,5 +17,5 @@ const putMenu=async({id,name})=>{
 };
 
 module.exports={
-    putMenu
+    putCategory
 }

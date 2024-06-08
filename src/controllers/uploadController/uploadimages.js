@@ -1,6 +1,8 @@
 const parser = require('../../config/multerConfig'); // Asegúrate de que la ruta sea correcta
 
 const uploadImage = (req, res) => {
+  console.log("entre al upload image");
+  console.log(req);
   if (!req.file) {
     return res.status(400).json({ message: 'No file uploaded' });
   }

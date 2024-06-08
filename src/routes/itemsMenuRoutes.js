@@ -5,18 +5,18 @@ const { getItemDetailMenuHandler } = require("../handlers/itemsMenuHandler/getIt
 const { searchItemsMenuHandler } = require("../handlers/itemsMenuHandler/searchItemMenu");
 const { ensureAuthenticated } = require("../utils/ensureAuth");
 const parser = require('../config/multer');
+const { putItemMenuHandler } = require("../handlers/itemsMenuHandler/putItemMenuHandler");
 
 const itemsMenuRouter = Router();
 
 
 itemsMenuRouter.get("/search",searchItemsMenuHandler);
-
 //itemsMenuRouter.get("/",ensureAuthenticated,getItemsMenuHandler);
 itemsMenuRouter.get("/",getItemsMenuHandler);
-
 itemsMenuRouter.get("/:id",getItemDetailMenuHandler);
-// itemsMenuRouter.put("/:id",putItemMenuHandler);
+itemsMenuRouter.put("/:id",putItemMenuHandler);
 itemsMenuRouter.post("/create", parser.single('image'), createItemMenuHandler);
+
 
 // itemsMenuRouter.delete("/:id",deleteItemMenuHandler);
 

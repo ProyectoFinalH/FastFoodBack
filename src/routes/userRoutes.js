@@ -5,10 +5,9 @@ const { getDetailUserHandler } = require("../handlers/userHandler/getDetailUser"
 const { putUserHandler } = require("../handlers/userHandler/putUser");
 const { loginUserHandler } = require("../handlers/userHandler/loginUser");
 const { loginGoogleHandler } = require("../handlers/userHandler/loginGoogle");
-
-const passport=require('passport');
 const { deleteUserHandler } = require("../handlers/userHandler/deleteUser");
 const { restoreUserHandler } = require("../handlers/userHandler/restoreUser");
+const passport=require('passport');
 const userRouter=Router();
 
 
