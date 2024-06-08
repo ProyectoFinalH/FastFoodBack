@@ -1,6 +1,7 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const knex = require('../db/knex');
+const { sendWelcomeEmail } = require('./mailer');
 
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
@@ -20,6 +21,8 @@ async (token, tokenSecret, profile, done) => {
       };
       const [userId] = await knex('users').insert(newUser).returning('id');
       user = { ...newUser, id: userId }; // Asegúrate de obtener solo el valor del id
+        // Enviar correo de bienvenida
+        await sendWelcomeEmail(newUser.email, newUser.username);
     }
     return done(null, user);
   } catch (err) {

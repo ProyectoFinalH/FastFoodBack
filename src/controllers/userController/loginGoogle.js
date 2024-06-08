@@ -1,5 +1,6 @@
 const admin = require('../../config/firebaseAdmin');
 const db = require("../../db/knex");
+const { sendWelcomeEmail } = require('../../config/mailer');
 
 const loginGoogle = async (token) => {
   try {
@@ -19,6 +20,10 @@ const loginGoogle = async (token) => {
       };
       const [userId] = await db('users').insert(newUser).returning('id');
       user = { ...newUser, id: userId[0] }; // Asegúrate de obtener solo el valor del id
+       // Enviar correo de bienvenida
+       console.log('Enviando correo de bienvenida a:', email); 
+       sendWelcomeEmail(email, name);
+ 
     }
 
     // Devolver el usuario autenticado
