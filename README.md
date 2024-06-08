@@ -1,5 +1,5 @@
 
-1. Crear su base datos en postgres llamada: fast_food_app
+1. Crear su base datos en postgres llamada: fast_food_app, si hubo actualizacion del back debera borrarla y crearla nuevamente la base datos.
    
 2. Editar el archivo knexfile.js ubicado en la carpeta db y poner la misma data del archivo .env a estas variables:
 
