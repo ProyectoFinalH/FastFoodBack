@@ -1,4 +1,3 @@
-
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const knex = require('../db/knex');
@@ -6,7 +5,7 @@ const knex = require('../db/knex');
 passport.use(new GoogleStrategy({
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-  callbackURL: 'https://d2b1-38-25-16-203.ngrok-free.app/auth/google/callback'
+  callbackURL: `${process.env.BASE_URL}/auth/google/callback`
 },
 async (token, tokenSecret, profile, done) => {
   try {
@@ -34,7 +33,6 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser(async (id, done) => {
   try {
-    // Si el id es un objeto, desestructurarlo para obtener solo el valor
     const userId = typeof id === 'object' ? id.id : id;
     const user = await knex('users').where({ id: userId }).first();
     done(null, user);
@@ -44,4 +42,5 @@ passport.deserializeUser(async (id, done) => {
 });
 
 module.exports = passport;
+
 
