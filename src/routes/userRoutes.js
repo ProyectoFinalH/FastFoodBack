@@ -9,6 +9,9 @@ const { loginGoogleHandler } = require("../handlers/userHandler/loginGoogle");
 const { deleteUserHandler } = require("../handlers/userHandler/deleteUser");
 const { restoreUserHandler } = require("../handlers/userHandler/restoreUser");
 
+
+
+
 const userRouter = Router();
 
 // Rutas de autenticación con Google
