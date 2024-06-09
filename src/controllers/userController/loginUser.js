@@ -18,7 +18,10 @@ const loginUser=async({email,password})=>{
         if(infoDB.password===password){
             // const token=generateToken(infoDB);
             // return token;
-            return true;
+            return {
+                state:true,
+                register:infoDB.id
+            };
         }else{
             return false;
         }

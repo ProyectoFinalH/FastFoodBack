@@ -1,10 +1,11 @@
 const db=require('../../db/knex');
 
-const createOrder=async({user_id,restaurant_id})=>{
+const createOrder=async({user_id,restaurant_id,total_price})=>{
 
     const newOrder={
         user_id:user_id,
         restaurant_id:restaurant_id,
+        total_price,
         active:true
     }
     
