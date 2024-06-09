@@ -1,17 +1,14 @@
 const { loginGoogle } = require("../../controllers/userController/loginGoogle");
 
-const loginGoogleHandler=async(req,res)=>{
+const loginGoogleHandler = async (req, res) => {
+  const { token } = req.body;
 
-    
-    try {
-        const response= await loginGoogle()
-        response===true
-        ?res.status(200).json(response)
-        :res.status(400).json("Error con login de Google");
-    } catch (error) {
-        res.status(400).json({error:error.message});
-    }
+  try {
+    const user = await loginGoogle(token);
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
 
-}
-
-module.exports={loginGoogleHandler}
+module.exports = { loginGoogleHandler };
