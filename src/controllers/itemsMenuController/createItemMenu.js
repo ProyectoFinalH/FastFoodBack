@@ -1,30 +1,27 @@
 const { findOrCreate } = require("../../utils/findOrCreate");
 
-const createItemMenu=async({menu_id,category_id,name,description,price,image_url})=>{
+const createItemMenu = async ({ menu_id, category_id, name, description, price, image_url }) => {
+    const newItemMenu = {
+        menu_id: menu_id,
+        category_id: category_id,
+        name: name,
+        description: description,
+        price: price,
+        image_url: image_url
+    };
+    const nameNewItemMenu = {
+        name: name
+    };
 
-    const newItemMenu={
-        menu_id:menu_id,
-        category_id:category_id,
-        name:name,
-        description:description,
-        price:price,
-        image_url:image_url
-    }
-    const nameNewItemMenu={
-        name:name
-    }
+    const { record, created } = await findOrCreate('menuitems', nameNewItemMenu, newItemMenu);
 
-    const {record,created}=await findOrCreate('menuitems',nameNewItemMenu,newItemMenu)
-
-    if(created){
+    if (created) {
         return record;
-    }else{
+    } else {
         return false;
     }
-    
-
 };
 
-module.exports={
+module.exports = {
     createItemMenu
-}
+};

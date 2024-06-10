@@ -15,7 +15,7 @@ itemsMenuRouter.get("/search",searchItemsMenuHandler);
 itemsMenuRouter.get("/",getItemsMenuHandler);
 itemsMenuRouter.get("/:id",getItemDetailMenuHandler);
 itemsMenuRouter.put("/:id",putItemMenuHandler);
-itemsMenuRouter.post("/create", parser.single('image'), createItemMenuHandler);
+itemsMenuRouter.post("/create", parser.single('image_url'), createItemMenuHandler);
 
 
 // itemsMenuRouter.delete("/:id",deleteItemMenuHandler);
