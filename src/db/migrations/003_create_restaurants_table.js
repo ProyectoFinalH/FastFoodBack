@@ -8,6 +8,7 @@ exports.up = function(knex) {
     table.string('phone').notNullable();
     table.string('description');
     table.boolean('active');
+    table.integer('role_id').unsigned().references('id').inTable('roles');
   });
 };
 

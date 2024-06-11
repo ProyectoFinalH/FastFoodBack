@@ -7,6 +7,7 @@ exports.up = function(knex) {
     table.string('description');
     table.decimal('price', 10, 2).notNullable();
     table.string('image_url');
+    table.boolean('active');
   });
 };
 

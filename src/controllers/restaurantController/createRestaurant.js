@@ -10,7 +10,8 @@ const createRestaurant=async({name,email,password,address,phone,description,imag
         phone:phone,
         description:description,
         image_url:image_url,
-        active:true
+        active:true,
+        role_id:2
     }
     const emailNewRestaurant={
         email:email

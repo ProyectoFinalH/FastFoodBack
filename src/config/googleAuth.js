@@ -16,7 +16,7 @@ async (token, tokenSecret, profile, done) => {
         username: profile.displayName,
         email: profile.emails[0].value,
         google_id: profile.id,
-        role_id: 2, // Asegúrate de que este ID existe en la tabla roles
+        role_id: 1, // Asegúrate de que este ID existe en la tabla roles
         password: '123456' // Proporciona un valor por defecto para password si es necesario
       };
       const [userId] = await knex('users').insert(newUser).returning('id');

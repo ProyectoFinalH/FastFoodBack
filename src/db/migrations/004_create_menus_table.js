@@ -3,6 +3,7 @@ exports.up = function(knex) {
     table.increments('id').primary();
     table.integer('restaurant_id').unsigned().references('id').inTable('restaurants');
     table.string('name').notNullable();
+    table.boolean('active');
   });
 };
 

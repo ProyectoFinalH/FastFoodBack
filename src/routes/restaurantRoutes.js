@@ -4,6 +4,8 @@ const { createRestaurantHandler } = require("../handlers/restaurantHandler/creat
 const { getDetailRestaurantHandler } = require("../handlers/restaurantHandler/getDetailRestaurant");
 const { loginRestaurantHandler } = require("../handlers/restaurantHandler/loginRestaurant");
 const { putRestaurantHandler } = require("../handlers/restaurantHandler/putRestaurant");
+const { deleteRestaurantHandler } = require("../handlers/restaurantHandler/deleteRestaurant");
+const { restoreRestaurantHandler } = require("../handlers/restaurantHandler/restoreRestaurant");
 
 const restaurantRouter=Router();
 
@@ -14,8 +16,8 @@ restaurantRouter.get("/:id",getDetailRestaurantHandler);
 restaurantRouter.put("/:id",putRestaurantHandler);
 restaurantRouter.post("/create",createRestaurantHandler);
 restaurantRouter.post("/login",loginRestaurantHandler);
-// restaurantRouter.put("/delete/:id",deleteRestaurantHandler);
-// restaurantRouter.put("/restore/:id",restoreRestaurantHandler);
+restaurantRouter.put("/delete/:id",deleteRestaurantHandler);
+restaurantRouter.put("/restore/:id",restoreRestaurantHandler);
 
 
 
