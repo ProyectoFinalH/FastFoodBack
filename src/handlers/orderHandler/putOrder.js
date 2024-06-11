@@ -3,10 +3,10 @@ const { putOrder } = require("../../controllers/orderController/putOrder");
 const putOrderHandler=async(req,res)=>{
 
     const{id}=req.params;
-    const{user_id,restaurant_id}=req.body;
+    const{user_id,restaurant_id,total_price,items}=req.body;
 
     try {
-        const response=await putOrder({id,user_id,restaurant_id});
+        const response=await putOrder({id,user_id,restaurant_id,total_price,items});
         response===false
         ?res.status(400).json("No se encontro la orden o hubo un error al actualizarlo")
         :res.status(200).json(response)

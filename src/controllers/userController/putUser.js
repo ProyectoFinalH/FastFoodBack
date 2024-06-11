@@ -2,12 +2,13 @@
 const { findOrUpdate } = require("../../utils/findOrUpdate");
 
 
-const putUser=async({id,username,email,password})=>{
+const putUser=async({id,username,email,password,image_url})=>{
 
     const User={
         username:username,
         email:email,
-        password:password
+        password:password,
+        image_url:image_url
     }
 
     

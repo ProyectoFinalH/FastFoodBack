@@ -3,6 +3,8 @@ const { getCategoriesHandler } = require("../handlers/categoryHandler/getCategor
 const { createCategoryHandler } = require("../handlers/categoryHandler/createCategory");
 const { getDetailCategoryHandler } = require("../handlers/categoryHandler/getDetailCategory");
 const { putCategoryHandler } = require("../handlers/categoryHandler/putCategory");
+const { deleteCategoryHandler } = require("../handlers/categoryHandler/deleteCategory");
+const { restoreCategoryHandler } = require("../handlers/categoryHandler/restoreCategory");
 
 const categoryRouter=Router();
 
@@ -11,7 +13,8 @@ categoryRouter.get("/",getCategoriesHandler);
 categoryRouter.get("/:id",getDetailCategoryHandler);
 categoryRouter.put("/:id",putCategoryHandler);
 categoryRouter.post("/create",createCategoryHandler);
-// categoryRouter.delete("/:id",deleteCategoryHandler);
+categoryRouter.put("/delete/:id",deleteCategoryHandler);
+categoryRouter.put("/restore/:id",restoreCategoryHandler);
 
 
 module.exports=categoryRouter;

@@ -3,11 +3,16 @@ const { putRestaurant } = require("../../controllers/restaurantController/putRes
 const putRestaurantHandler=async(req,res)=>{
 
     const {id}=req.params;
-    const {name,email,password,address,phone,description,image_url}=req.body;
+    const {name,email,password,address,phone,description}=req.body;
+
+    let imageCloudinary;
+    if (req.file) {
+        imageCloudinary = req.file.path;
+    }
 
     try {
         
-        const response=await putRestaurant({id,name,email,password,address,phone,description,image_url});
+        const response=await putRestaurant({id,name,email,password,address,phone,description,image_url:imageCloudinary});
         response===false
         ?res.status(400).json("Ya existe un restaurant con este correo o hubo un error al actualizarlo")
         :res.status(200).json(response)

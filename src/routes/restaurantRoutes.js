@@ -6,6 +6,7 @@ const { loginRestaurantHandler } = require("../handlers/restaurantHandler/loginR
 const { putRestaurantHandler } = require("../handlers/restaurantHandler/putRestaurant");
 const { deleteRestaurantHandler } = require("../handlers/restaurantHandler/deleteRestaurant");
 const { restoreRestaurantHandler } = require("../handlers/restaurantHandler/restoreRestaurant");
+const parser = require("../config/multer");
 
 const restaurantRouter=Router();
 
@@ -13,8 +14,8 @@ const restaurantRouter=Router();
 //restaurantRouter.get("/loginGoogle",passport.authenticate('google',{scope:['profile','email']}));
 restaurantRouter.get("/",getRestaurantsHandler);
 restaurantRouter.get("/:id",getDetailRestaurantHandler);
-restaurantRouter.put("/:id",putRestaurantHandler);
-restaurantRouter.post("/create",createRestaurantHandler);
+restaurantRouter.put("/:id",parser.single('image_url'),putRestaurantHandler);
+restaurantRouter.post("/create",parser.single('image_url'),createRestaurantHandler);
 restaurantRouter.post("/login",loginRestaurantHandler);
 restaurantRouter.put("/delete/:id",deleteRestaurantHandler);
 restaurantRouter.put("/restore/:id",restoreRestaurantHandler);

@@ -1,6 +1,6 @@
 const { findOrCreate } = require("../../utils/findOrCreate");
 
-const createItemMenu=async({menu_id,category_id,name,description,price,image_url,active})=>{
+const createItemMenu=async({menu_id,category_id,name,description,price,image_url})=>{
 
     const newItemMenu={
         menu_id:menu_id,

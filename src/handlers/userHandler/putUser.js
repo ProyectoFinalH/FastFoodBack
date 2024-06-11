@@ -5,9 +5,16 @@ const putUserHandler=async(req,res)=>{
     const {id}=req.params;
     const {username,email,password}=req.body;
 
+    let imageCloudinary;
+    if (req.file) {
+        imageCloudinary = req.file.path;
+    }
+
+
+
     try {
         
-        const response=await putUser({id,username,email,password});
+        const response=await putUser({id,username,email,password,image_url:imageCloudinary});
         response===false
         ?res.status(400).json("Ya existe un usuario con este correo o hubo un error al actualizarlo")
         :res.status(200).json(response)

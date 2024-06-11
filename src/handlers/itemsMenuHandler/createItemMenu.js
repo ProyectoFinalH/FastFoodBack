@@ -2,18 +2,17 @@ const { createItemMenu } = require("../../controllers/itemsMenuController/create
 
 
 const createItemMenuHandler = async (req, res) => {
-    const { menu_id, category_id, name, description, price } = req.body;
+    const { menu_id, category_id, name, description, price} = req.body;
 
-    console.log(req.file);
 
-    if (!req.file) {
-        return res.status(400).json({ message: 'El archivo no fue subido' });
+    let imageCloudinary;
+    if (req.file) {
+        imageCloudinary = req.file.path;
     }
-
-    const imageUrl = req.file.path;
+ 
 
     try {
-        const response = await createItemMenu({ menu_id, category_id, name, description, price, image_url:imageUrl});
+        const response = await createItemMenu({ menu_id, category_id, name, description, price, image_url:imageCloudinary});
         response === false
             ? res.status(400).json("Ya existe un item con ese nombre")
             : res.status(200).json(response);
