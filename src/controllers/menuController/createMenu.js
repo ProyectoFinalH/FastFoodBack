@@ -4,7 +4,8 @@ const createMenu=async({restaurant_id,name})=>{
 
     const newMenu={
         restaurant_id:restaurant_id,
-        name:name
+        name:name,
+        active:true
     }
     const nameNewMenu={
         name:name

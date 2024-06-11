@@ -6,7 +6,7 @@ const categoryRouter = require("./categoryRoutes");
 const commentRouter = require("./commentRoutes");
 const restaurantRouter = require("./restaurantRoutes");
 const orderRouter = require("./orderRoutes");
-const orderItemsRouter = require("./orderItemsRoutes");
+
 
 const jwt=require('jsonwebtoken')
 require("dotenv").config()
@@ -31,7 +31,7 @@ mainRoutes.use("/categories",categoryRouter);
 mainRoutes.use("/comments",commentRouter);
 mainRoutes.use("/restaurants",restaurantRouter);
 mainRoutes.use("/orders",orderRouter);
-mainRoutes.use("/orderItems",orderItemsRouter);
+
 
 
 module.exports=mainRoutes;

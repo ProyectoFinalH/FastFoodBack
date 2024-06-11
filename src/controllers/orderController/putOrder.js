@@ -1,10 +1,12 @@
 const db=require('../../db/knex');
 
-const putOrder=async({id,user_id,restaurant_id})=>{
+const putOrder=async({id,user_id,restaurant_id,total_price,items})=>{
 
     const newOrder={
         user_id:user_id,
         restaurant_id:restaurant_id,
+        total_price:total_price,
+        items:items
     }
     
     const affectedRows = await db('orders').where({id:id}).update(newOrder);

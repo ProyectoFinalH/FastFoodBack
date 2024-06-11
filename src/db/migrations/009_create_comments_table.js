@@ -5,6 +5,7 @@ exports.up = function(knex) {
     table.integer('restaurant_id').unsigned().references('id').inTable('restaurants');
     table.text('content').notNullable();
     table.timestamp('created_at').defaultTo(knex.fn.now());
+    table.boolean('active');
   });
 };
 

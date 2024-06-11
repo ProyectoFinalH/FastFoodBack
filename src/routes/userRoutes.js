@@ -8,6 +8,7 @@ const { loginUserHandler } = require("../handlers/userHandler/loginUser");
 const { loginGoogleHandler } = require("../handlers/userHandler/loginGoogle");
 const { deleteUserHandler } = require("../handlers/userHandler/deleteUser");
 const { restoreUserHandler } = require("../handlers/userHandler/restoreUser");
+const parser = require("../config/multer");
 
 
 
@@ -29,7 +30,7 @@ userRouter.post("/auth/google", loginGoogleHandler);
 // Otras rutas de usuario
 userRouter.get("/", getUsersHandler);
 userRouter.get("/:id", getDetailUserHandler);
-userRouter.put("/:id", putUserHandler);
+userRouter.put("/:id",parser.single('image_url'), putUserHandler);
 userRouter.post("/create", createUserHandler);
 userRouter.post("/login", loginUserHandler);
 userRouter.put("/delete/:id", deleteUserHandler);

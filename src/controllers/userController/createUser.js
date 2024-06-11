@@ -6,7 +6,9 @@ const createUser = async ({ username, email, password }) => {
     username: username,
     email: email,
     password: password,
-    active: true
+    active: true,
+    role_id:1,
+    
   };
   
   const emailNewUser = {
