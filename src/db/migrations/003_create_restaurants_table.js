@@ -7,6 +7,7 @@ exports.up = function(knex) {
     table.string('address').notNullable();
     table.string('phone').notNullable();
     table.string('description');
+    table.string('image_url');
     table.boolean('active');
     table.integer('role_id').unsigned().references('id').inTable('roles');
   });
