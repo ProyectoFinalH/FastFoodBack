@@ -1,6 +1,5 @@
 exports.seed = async function(knex) {
-    // Borrar todos los registros existentes
-    await knex('users').del()
+    
     // Insertar nuevos registros
     await knex('users').insert([
           { id: 1, 

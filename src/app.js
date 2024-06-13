@@ -17,8 +17,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// Middleware para servir archivos estáticos desde la carpeta 'public'
-app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use(cors()); // Políticas de seguridad CORS
 app.use(express.json()); // Para que el server pueda leer JSON

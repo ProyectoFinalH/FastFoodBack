@@ -7,7 +7,7 @@ exports.up = function(knex) {
     table.string('telefono');
     table.string('google_id').unique();
     table.integer('role_id').unsigned().references('id').inTable('roles');
-    table.string('image_url').defaultTo('/images/user_default.jpg');
+    table.string('image_url').defaultTo('https://img.freepik.com/free-vector/illustration-businessman_53876-5856.jpg?t=st=1718246869~exp=1718250469~hmac=a01e4895522ae8276b12e8e9cb0b08ab9c074ae4ea434a6203e7226481dd081e&w=740');
     table.boolean('active');
   });
 };

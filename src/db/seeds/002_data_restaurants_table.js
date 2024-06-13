@@ -1,16 +1,16 @@
 exports.seed = async function(knex) {
-    // Borrar todos los registros existentes
-    await knex('restaurants').del()
+    
     // Insertar nuevos registros
     await knex('restaurants').insert([
           { id: 1, 
-            name: 'KFC',
-            email: 'kfc@gmail.com',
+            name: 'Tanta',
+            email: 'tanta@gmail.com',
             password: '1234',
             address:'calle 123',
             phone: '12345678',
-            description:'venta de fast food',
+            description:'Restaurante',
             role_id:'2',
+            image_url:'https://i.pinimg.com/originals/29/1c/b5/291cb59379301c2544dbb8816cf49ac1.jpg',
             active:true
         },
                
