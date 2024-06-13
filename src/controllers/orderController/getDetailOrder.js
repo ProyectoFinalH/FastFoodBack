@@ -10,9 +10,8 @@ const getDetailOrder=async(id)=>{
         'orders.items','orders.total_price','orders.order_date','statusorder.name as status_order','orders.active'
     )
     .where('orders.id',id)
-    //.andWhere({active:true})
+    .andWhere('orders.active',true)
     .first();
-    console.log(infoDB);
     return infoDB;
     
 
