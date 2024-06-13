@@ -20,7 +20,9 @@ const loginUser=async({email,password})=>{
             // return token;
             return {
                 state:true,
-                register:infoDB.id
+                id:infoDB.id,
+                email:infoDB.email,
+                name:infoDB.username
             };
         }else{
             return false;
