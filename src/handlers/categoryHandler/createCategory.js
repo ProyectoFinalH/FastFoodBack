@@ -2,10 +2,10 @@ const { createCategory } = require("../../controllers/categoryController/createC
 
 const createCategoryHandler=async(req,res)=>{
 
-    const{name}=req.body;
+    const{restaurant_id,name}=req.body;
 
     try {
-        const response=await createCategory({name});
+        const response=await createCategory({restaurant_id,name});
         response===false
         ?res.status(400).json("Ya existe una categoria con ese nombre")
         :res.status(200).json(response)
