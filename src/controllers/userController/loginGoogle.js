@@ -15,7 +15,7 @@ const loginGoogle = async (token) => {
         username: name,
         email: email,
         google_id: uid,
-        role_id: 2, // Ajusta según tus necesidades
+        role_id: 1, // Ajusta según tus necesidades
         password: '123456', // Proporciona un valor por defecto para password si es necesario
         active:true
       };
