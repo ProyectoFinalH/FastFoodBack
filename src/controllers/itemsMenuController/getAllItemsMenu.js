@@ -1,14 +1,14 @@
 const db=require('../../db/knex');
 
-const getItemsMenu=async()=>{
+const getAllItemsMenu=async()=>{
 
     const infoDB=await db('menuitems')
-    .where({active:true})
+    .select('*')
     .orderBy('id','asc');
     return infoDB;
 
 };
 
 module.exports={
-    getItemsMenu
+    getAllItemsMenu
 }

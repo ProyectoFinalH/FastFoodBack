@@ -5,11 +5,13 @@ const { getDetailOrderHandler } = require("../handlers/orderHandler/getDetailOrd
 const { putOrderHandler } = require("../handlers/orderHandler/putOrder");
 const { deleteOrderHandler } = require("../handlers/orderHandler/deleteOrder");
 const { restoreOrderHandler } = require("../handlers/orderHandler/restoreOrder");
+const { getAllOrdersHandler } = require("../handlers/orderHandler/getAllOrders");
 
 const orderRouter=Router();
 
 
 orderRouter.get("/",getOrdersHandler);
+orderRouter.get("/all",getAllOrdersHandler);
 orderRouter.get("/:id",getDetailOrderHandler);
 orderRouter.put("/:id",putOrderHandler);
 orderRouter.post("/create",createOrderHandler);
