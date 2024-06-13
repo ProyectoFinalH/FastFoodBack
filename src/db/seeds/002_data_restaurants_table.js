@@ -2,7 +2,7 @@ exports.seed = async function(knex) {
     
     // Insertar nuevos registros
     await knex('restaurants').insert([
-          { id: 1, 
+          {  
             name: 'Tanta',
             email: 'tanta@gmail.com',
             password: '1234',

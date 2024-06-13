@@ -7,7 +7,7 @@ exports.up = function(knex) {
     table.string('address').notNullable();
     table.string('phone').notNullable();
     table.string('description');
-    table.string('image_url').defaultTo('https://img.freepik.com/free-vector/illustration-house-insurance_53876-6157.jpg?t=st=1718246779~exp=1718250379~hmac=c1dcba83f97b1ba573bf32e5a77173f4bfeff36bbd78f9363ab1aebae6a7ebe3&w=740');
+    table.string('image_url').defaultTo('https://w7.pngwing.com/pngs/427/872/png-transparent-cafeteria-restaurant-construction-site-miscellaneous-cafe-cartoon.png');
     table.boolean('active');
     table.integer('role_id').unsigned().references('id').inTable('roles');
   });
