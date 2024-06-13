@@ -3,15 +3,15 @@ exports.seed = async function(knex) {
     await knex('categories').del()
     // Insertar nuevos registros
     await knex('categories').insert([
-          { id: 1, name: 'bebidas' },
-          { id: 2, name: 'sandwichs'},
-          { id: 3, name: 'entradas'},
-          { id: 4, name: 'plato de fondo'},
-          { id: 5, name: 'postres'},
-          { id: 6, name: 'piqueos'},
-          { id: 7, name: 'cocktails'},
-          { id: 8, name: 'hamburguesas'},
-          { id: 9, name: 'pizzas'}
+          { id: 1, restaurant_id:1, name: 'bebidas' ,active:true},
+          { id: 2, restaurant_id:1, name: 'sandwichs',active:true},
+          { id: 3, restaurant_id:1, name: 'entradas',active:true},
+          { id: 4, restaurant_id:1, name: 'plato de fondo',active:true},
+          { id: 5, restaurant_id:1, name: 'postres',active:true},
+          { id: 6, restaurant_id:1, name: 'piqueos',active:true},
+          { id: 7, restaurant_id:1, name: 'cocktails',active:true},
+          { id: 8, restaurant_id:1, name: 'hamburguesas',active:true},
+          { id: 9, restaurant_id:1, name: 'pizzas',active:true}
 
 
           

@@ -7,6 +7,7 @@ const itemsMenuRoutes = require("./routes/itemsMenuRoutes"); // Asegúrate de qu
 const userRoutes = require("./routes/userRoutes"); // Importa las rutas de usuario
 const cors = require("cors");
 const app = express();
+const path = require('path');
 
 // Middlewares
 
@@ -15,6 +16,9 @@ app.use((req, res, next) => {
   res.setHeader('ngrok-skip-browser-warning', 'true');
   next();
 });
+
+// Middleware para servir archivos estáticos desde la carpeta 'public'
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(cors()); // Políticas de seguridad CORS
 app.use(express.json()); // Para que el server pueda leer JSON

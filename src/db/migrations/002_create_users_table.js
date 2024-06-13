@@ -7,7 +7,7 @@ exports.up = function(knex) {
     table.string('telefono');
     table.string('google_id').unique();
     table.integer('role_id').unsigned().references('id').inTable('roles');
-    table.string('image_url');
+    table.string('image_url').defaultTo('/images/user_default.jpg');
     table.boolean('active');
   });
 };
