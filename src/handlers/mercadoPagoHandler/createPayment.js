@@ -14,8 +14,8 @@ const createPaymentHandler=async(req,res)=>{
 			}
 		],
 		back_urls: {
-			"success": "localhost:3000/",
-			"failure": "localhost:3000/",
+			"success": "localhost:3000/menu",
+			"failure": "localhost:3000/menu",
 			"pending": ""
 		},
 		auto_return: "approved",
