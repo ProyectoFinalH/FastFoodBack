@@ -37,4 +37,14 @@ app.use(mainRoutes); // Aquí inicia el router principal
 app.use('/api/menuitems', itemsMenuRoutes); // Ruta para manejar ítems del menú
 app.use('/api/users', userRoutes); // Ruta para manejar usuarios y autenticación
 
+
+app.use((req, res, next) => {// Para crear la preferencia de Mercado pago
+	res.setHeader(
+	  'Content-Security-Policy',
+	  "script-src 'self' 'https://www.mercadopago.com.ar';"
+	);
+	next();
+  });
+  
+
 module.exports = app;
