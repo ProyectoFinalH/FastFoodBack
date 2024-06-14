@@ -67,9 +67,27 @@ const sendWelcomeEmail = async (to, username) => {
   });
 };
 
+const sendUserUpdateEmail = async (to, username) => {
+  const transporter = await createTransporter();
+  const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to,
+      subject: 'Actualización de Datos de Usuario',
+      text: `Hola ${username}, tus datos han sido actualizados en nuestra aplicación.`,
+      html: `<p>Hola <strong>${username}</strong>, tus datos han sido actualizados en nuestra aplicación.</p>`
+  };
 
+  transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+          console.error('Error sending user update email:', error);
+      } else {
+          console.log('User update email sent:', info.response);
+      }
+  });
+};
 
 module.exports = {
   sendOrderConfirmationEmail,
-  sendWelcomeEmail
+  sendWelcomeEmail,
+  sendUserUpdateEmail
 };
