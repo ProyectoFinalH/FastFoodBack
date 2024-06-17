@@ -1,9 +1,9 @@
 const db=require('../../db/knex');
 
-const putOrder=async({id,user_id,total_price,items,statusorder_id})=>{
+const putOrder=async({id,total_price,items,statusorder_id})=>{
 
     const newOrder={
-        user_id:user_id,
+        
         total_price:total_price,
         items:JSON.stringify(items),
         statusorder_id:statusorder_id
