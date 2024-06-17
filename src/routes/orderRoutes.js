@@ -8,12 +8,14 @@ const { restoreOrderHandler } = require("../handlers/orderHandler/restoreOrder")
 const { getAllOrdersHandler } = require("../handlers/orderHandler/getAllOrders");
 const { putStatusOrderHandler } = require("../handlers/orderHandler/putStatusOrder");
 const { getOrdersRestaurantHandler } = require("../handlers/orderHandler/getOrdersRestaurant");
+const { getOrdersUserHandler } = require("../handlers/orderHandler/getOrdersUser");
 
 const orderRouter=Router();
 
 
 orderRouter.get("/",getOrdersHandler);
-orderRouter.get("/restaurant/:id",getOrdersRestaurantHandler,);
+orderRouter.get("/restaurant/:id",getOrdersRestaurantHandler);
+orderRouter.get("/user/:id",getOrdersUserHandler);
 orderRouter.get("/all",getAllOrdersHandler);
 orderRouter.get("/:id",getDetailOrderHandler);
 orderRouter.put("/:id",putOrderHandler);
