@@ -98,4 +98,6 @@ module.exports = {
   sendOrderConfirmationEmail,
   sendWelcomeEmail,
   sendUserUpdateEmail
+
 };
+

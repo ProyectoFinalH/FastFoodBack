@@ -6,7 +6,8 @@ const createOrder=async({restaurant_id,user_id,total_price,items,statusorder_id}
         restaurant_id:restaurant_id,
         user_id:user_id,
         total_price:total_price,
-        items:items,
+        items:JSON.stringify(items),
+        //items:items, // esto cambiar cuando el front manda dato ya despues de stringify
         statusorder_id:statusorder_id,
         active:true
     }

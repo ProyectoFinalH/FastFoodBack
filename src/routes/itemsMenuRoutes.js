@@ -9,6 +9,8 @@ const { putItemMenuHandler } = require("../handlers/itemsMenuHandler/putItemMenu
 const { deleteItemMenuHandler } = require("../handlers/itemsMenuHandler/deleteItemMenu");
 const { restoreItemMenuHandler } = require("../handlers/itemsMenuHandler/restoreItemMenu");
 const { getAllItemsMenuHandler } = require("../handlers/itemsMenuHandler/getAllItemsMenu");
+const { getItemsMenuRestaurantHandler } = require("../handlers/itemsMenuHandler/getItemsMenuRestaurant");
+const { getItemsMenuHomeHandler } = require("../handlers/itemsMenuHandler/getItemsMenuHome");
 
 
 const itemsMenuRouter = Router();
@@ -16,6 +18,8 @@ const itemsMenuRouter = Router();
 
 itemsMenuRouter.get("/search",searchItemsMenuHandler);
 //itemsMenuRouter.get("/",ensureAuthenticated,getItemsMenuHandler);
+itemsMenuRouter.get("/restaurant/:id",getItemsMenuRestaurantHandler)
+itemsMenuRouter.get("/home/:id",getItemsMenuHomeHandler)
 itemsMenuRouter.get("/",getItemsMenuHandler);
 itemsMenuRouter.get("/all",getAllItemsMenuHandler);
 itemsMenuRouter.get("/:id",getItemDetailMenuHandler);

@@ -1,10 +1,11 @@
-const { getMenus } = require("../../controllers/menuController/getMenus");
-
-const getMenusHandler=async(req,res)=>{
+const { getMenusHome } = require("../../controllers/menuController/getMenusHome");
 
 
+const getMenusHomeHandler=async(req,res)=>{
+
+    const {id}=req.params;
     try {
-        const menus=await getMenus();
+        const menus=await getMenusHome(id);
         menus.length
         ?res.status(200).json(menus)
         :res.status(400).json("No hay menus registrados");
@@ -16,5 +17,5 @@ const getMenusHandler=async(req,res)=>{
 }
 
 module.exports={
-    getMenusHandler
+    getMenusHomeHandler
 }

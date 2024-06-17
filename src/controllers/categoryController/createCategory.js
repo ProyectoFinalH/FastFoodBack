@@ -1,6 +1,6 @@
 const { findOrCreate } = require("../../utils/findOrCreate");
 
-const createCategory=async({name})=>{
+const createCategory=async({restaurant_id,name})=>{
 
     const newCategory={
         restaurant_id:restaurant_id,
