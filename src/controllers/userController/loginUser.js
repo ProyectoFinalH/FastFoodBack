@@ -3,7 +3,7 @@ const jwt=require('jsonwebtoken')
 
 // Función para generar un token JWT
 function generateToken(user) {
-    return jwt.sign({ id: user.id, email: user.email}, process.env.JWT_SECRET, {
+    return jwt.sign({ id: user.id, name:user.username, email: user.email, role_id:user.role_id}, process.env.JWT_SECRET, {
       expiresIn: '1h',
     });
   }
@@ -16,9 +16,10 @@ const loginUser=async({email,password})=>{
     .first();
     if(infoDB){
         if(infoDB.password===password){
-            // const token=generateToken(infoDB);
+            const token=generateToken(infoDB);
             // return token;
             return {
+                token:token,
                 state:true,
                 id:infoDB.id,
                 email:infoDB.email,

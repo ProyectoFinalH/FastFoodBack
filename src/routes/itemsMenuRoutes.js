@@ -17,7 +17,7 @@ const itemsMenuRouter = Router();
 
 
 itemsMenuRouter.get("/search",searchItemsMenuHandler);
-//itemsMenuRouter.get("/",ensureAuthenticated,getItemsMenuHandler);
+//itemsMenuRouter.get("/",ensureAuthenticated,getItemsMenuHandler);//**ruta debe ir asi: /?token=${token} */
 itemsMenuRouter.get("/restaurant/:id",getItemsMenuRestaurantHandler)
 itemsMenuRouter.get("/home/:id",getItemsMenuHomeHandler)
 itemsMenuRouter.get("/",getItemsMenuHandler);
