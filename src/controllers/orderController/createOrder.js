@@ -1,6 +1,6 @@
 const db=require('../../db/knex');
 
-const createOrder=async({restaurant_id,user_id,total_price,items,statusorder_id})=>{
+const createOrder=async({restaurant_id,user_id,total_price,items})=>{
 
     const newOrder={
         restaurant_id:restaurant_id,
@@ -8,7 +8,7 @@ const createOrder=async({restaurant_id,user_id,total_price,items,statusorder_id}
         total_price:total_price,
         items:JSON.stringify(items),
         //items:items, // esto cambiar cuando el front manda dato ya despues de stringify
-        statusorder_id:statusorder_id,
+        statusorder_id:1,
         active:true
     }
     
