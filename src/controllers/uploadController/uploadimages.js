@@ -1,4 +1,4 @@
-const parser = require('../../config/multer'); // Asegúrate de que la ruta sea correcta
+const parser = require('../../config/multerConfig'); // Asegúrate de que la ruta sea correcta
 
 const uploadImage = (req, res) => {
   console.log("entre al upload image");
