@@ -10,7 +10,11 @@ exports.seed = async function(knex) {
           {  restaurant_id:1, name: 'piqueos',active:true},
           {  restaurant_id:1, name: 'cocktails',active:true},
           {  restaurant_id:1, name: 'hamburguesas',active:true},
-          {  restaurant_id:1, name: 'pizzas',active:true}
+          {  restaurant_id:1, name: 'pizzas',active:true},
+          {  restaurant_id:2, name: 'bebidas' ,active:true},
+          {  restaurant_id:2, name: 'hamburguesas',active:true},
+          {  restaurant_id:2, name: 'postres',active:true},
+
 
 
           
