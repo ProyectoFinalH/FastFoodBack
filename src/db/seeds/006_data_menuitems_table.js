@@ -56,6 +56,30 @@ exports.seed = async function(knex) {
           {  menu_id: 4,category_id: 9,restaurant_id:1,name: 'Pizza hawaiana',description: 'con piña y palitos al ajo',price: '17',active:true,
             image_url:'https://i.pinimg.com/originals/2d/15/00/2d15009cab2b7b82d880d6831cb45523.jpg'
           },
+          {  menu_id: 4,category_id: 8,restaurant_id:2,name: 'Whopper con queso',description: 'Hamburguesa grande a la parrilla con queso',price: '7',active:true,
+            image_url:'https://www.burgerking.pe/Multimedia/productos/detalle/WHOPPER_CON_QUESO_202403251641114665.avif'
+          },
+          {  menu_id: 4,category_id: 8,restaurant_id:2,name: 'Whopper tejana',description: 'Hamburguesa a la parrilla con queso, BBQ',price: '8',active:true,
+            image_url:'https://www.burgerking.pe/Multimedia/productos/detalle/WHOPPER_TEJANA_JUNIOR_202403141119554598.avif'
+          },
+          {  menu_id: 4,category_id: 8,restaurant_id:2,name: 'Whopper guacamole',description: 'Hamburguesa a la parrilla con guacamole',price: '7.5',active:true,
+            image_url:'https://www.burgerking.pe/Multimedia/productos/detalle/WHOPPER_GUACAMOLE_202403141116328608.avif'
+          },
+          {  menu_id: 4,category_id: 1,restaurant_id:2,name: 'Coca Cola',description: 'Refrescante Coca Cola',price: '1.5',active:true ,
+            image_url:'https://www.burgerking.pe/Multimedia/productos/detalle/COCA_COLA_ORIGINAL_V3.avif'
+          },
+          {  menu_id: 4,category_id: 1,restaurant_id:2,name: 'Fanta',description: 'Refrescante Fanta',price: '1.3',active:true ,
+            image_url:'https://www.burgerking.pe/Multimedia/productos/detalle/FANTA_ORIGINAL_V3.avif'
+          },
+          {  menu_id: 4,category_id: 1,restaurant_id:2,name: 'Agua',description: 'Agua sin gas',price: '1.2',active:true ,
+            image_url:'https://www.burgerking.pe/Multimedia/productos/detalle/SAN_LUIS_SIN_GAS_V1.avif'
+          },
+          {  menu_id: 4,category_id: 5,restaurant_id:2,name: 'Pie de manzana',description: 'Pie crocante relleno de trozos de manzana',price: '2',active:true,
+            image_url:'https://www.burgerking.pe/Multimedia/productos/detalle/PIE_DE_MANZANA_V1.avif'
+          },
+          {  menu_id: 4,category_id: 5,restaurant_id:2,name: 'King Fusion Oreo',description: 'Cremoso helado de vainilla, chocolate o mixto con pedacitos de galleta OREO',price: '3',active:true,
+            image_url:'https://www.burgerking.pe/Multimedia/productos/detalle/KING_FUSION_OREO_V7.avif'
+          },
 
 
 
