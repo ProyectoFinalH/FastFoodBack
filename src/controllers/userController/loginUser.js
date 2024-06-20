@@ -17,14 +17,14 @@ const loginUser=async({email,password})=>{
     if(infoDB){
         if(infoDB.password===password){
             const token=generateToken(infoDB);
-            // return token;
-            return {
-                token:token,
-                state:true,
-                id:infoDB.id,
-                email:infoDB.email,
-                name:infoDB.username
-            };
+            return token;
+            // return {
+            //     token:token,
+            //     state:true,
+            //     id:infoDB.id,
+            //     email:infoDB.email,
+            //     name:infoDB.username
+            // };
         }else{
             return false;
         }
