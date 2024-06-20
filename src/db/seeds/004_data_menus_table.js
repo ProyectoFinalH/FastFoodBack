@@ -5,7 +5,8 @@ exports.seed = async function(knex) {
           {  restaurant_id:1 , name: 'desayuno', active:true},
           {  restaurant_id:1 , name: 'almuerzo', active:true},
           {  restaurant_id:1, name: 'cena',active:true},
-          {  restaurant_id:1, name: 'fast_food',active:true}
+          {  restaurant_id:1, name: 'fast_food',active:true},
+          {  restaurant_id:2, name: 'fast_food',active:true}
           
     ]);
 };
