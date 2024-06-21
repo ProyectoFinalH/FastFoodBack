@@ -5,14 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-<<<<<<< HEAD
-    "start": "node index.js",
-    "migrate": "npx knex migrate:latest --knexfile src/db/knexfile.js"
-=======
-    "start": "nodemon index.js",
+  "start": "nodemon index.js",
     "migrate": "npx knex migrate:latest --knexfile src/db/knexfile.js",
     "datastart": "npx knex seed:run --knexfile src/db/knexfile.js"
->>>>>>> temp-branch
   },
   "keywords": [],
   "author": "",

@@ -36,7 +36,15 @@ const sendOrderConfirmationEmail = async (to, orderDetails) => {
     from: process.env.EMAIL_USER,
     to,
     subject: 'Order Confirmation',
-    text: `Thank you for your order!\n\n${orderDetails}`
+    html: `
+      <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
+        <h2 style="color: #4CAF50;">Order Confirmation</h2>
+        <p>Thank you for your order!</p>
+        <h3>Order Details</h3>
+        <pre style="background: #f4f4f4; padding: 10px; border-radius: 5px;">${orderDetails}</pre>
+        <p style="margin-top: 20px;">If you have any questions, feel free to <a href="mailto:${process.env.EMAIL_USER}">contact us</a>.</p>
+      </div>
+    `
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
@@ -47,7 +55,6 @@ const sendOrderConfirmationEmail = async (to, orderDetails) => {
     }
   });
 };
-
 const sendWelcomeEmail = async (to, username) => {
   const transporter = await createTransporter();
   const imageUrl = 'https://res.cloudinary.com/dw5j9zsag/image/upload/v1718565097/hsnv7ezxocvcdbwl3ed3.png';
