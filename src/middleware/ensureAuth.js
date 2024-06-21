@@ -18,20 +18,30 @@ function ensureAuthenticated(req, res, next) {
   }
 }
 
-// Middleware para verificar si el usuario es el Restaurant
-function ensureRestaurant(req, res, next) {
+// Middleware para verificar si es un consumidor
+function ensureUser(req, res, next) {
   ensureAuthenticated(req, res, () => {
-    if (req.user && req.user.role_id === 2) { // Suponiendo que el role_id 2 es para el Restaurantes
+    if (req.user && req.user.role_id === 1) { // Autoriza al consumidor
       return next();
     }
-    res.status(403).json({ message: 'No tiene acceso a esta pagina' }); // No es el Restaurant
+    res.status(403).json({ message: 'No tiene acceso a esta pagina' }); // No es el consumidor
+  });
+}
+
+// Middleware para verificar si el usuario es el Restaurant o el SuperAdmin
+function ensureRestaurant(req, res, next) {
+  ensureAuthenticated(req, res, () => {
+    if (req.user && (req.user.role_id === 2 || req.user.role_id === 3)) { // Autoriza al restaurante id(2) y Superadmin id(3)
+      return next();
+    }
+    res.status(403).json({ message: 'No tiene acceso a esta pagina' }); // No es el Restaurant ni superadmin
   });
 }
 
 // Middleware para verificar si el usuario es el Superadmin
 function ensureAdmin(req, res, next) {
   ensureAuthenticated(req, res, () => {
-    if (req.user && req.user.role_id === 3) { // Suponiendo que el role_id 3 es para el Superadmin
+    if (req.user && req.user.role_id === 3) { // Autoriza solo al superadmin id(3)
       return next();
     }
     res.status(403).json({ message: 'No tiene acceso a esta pagina' }); // No es el Superadmin
@@ -41,5 +51,6 @@ function ensureAdmin(req, res, next) {
 module.exports = {
   ensureAuthenticated,
   ensureAdmin,
-  ensureRestaurant
+  ensureRestaurant,
+  ensureUser
 };
