@@ -8,7 +8,7 @@ module.exports = {
     connection: {
       host: DB_HOST||'localhost',  
       user: DB_USER||'postgres',
-      password: DB_PASSWORD||'Temporaltemporal1',
+      password: DB_PASSWORD||'admin',
       database: DB_NAME||'fast_food_app',
       port: DB_PORT||'5432',
       ssl: false // Asegúrate de que SSL esté deshabilitado si no lo necesitas
