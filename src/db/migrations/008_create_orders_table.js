@@ -6,6 +6,7 @@ exports.up = function(knex) {
     table.jsonb('items').defaultTo([]);
     table.decimal('total_price', 10, 2);
     table.timestamp('order_date').defaultTo(knex.fn.now());
+    table.integer('statusorder_id').unsigned().references('id').inTable('statusorder');
     table.boolean('active');
   });
 };

@@ -6,11 +6,12 @@ const categoryRouter = require("./categoryRoutes");
 const commentRouter = require("./commentRoutes");
 const restaurantRouter = require("./restaurantRoutes");
 const orderRouter = require("./orderRoutes");
-
+const mercadoPagoRouter = require("./mercadoPagoRoutes");
 
 const jwt=require('jsonwebtoken')
 require("dotenv").config()
 const passport=require('passport');
+
 
 
 const mainRoutes=Router();
@@ -31,6 +32,8 @@ mainRoutes.use("/categories",categoryRouter);
 mainRoutes.use("/comments",commentRouter);
 mainRoutes.use("/restaurants",restaurantRouter);
 mainRoutes.use("/orders",orderRouter);
+mainRoutes.use("/mercadopago",mercadoPagoRouter);
+
 
 
 

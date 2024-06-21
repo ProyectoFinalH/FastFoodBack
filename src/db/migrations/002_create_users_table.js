@@ -3,10 +3,11 @@ exports.up = function(knex) {
     table.increments('id').primary();
     table.string('username').notNullable();
     table.string('email').notNullable().unique();
-    table.string('password').notNullable();
+    table.string('password');
+    table.string('telefono');
     table.string('google_id').unique();
     table.integer('role_id').unsigned().references('id').inTable('roles');
-    table.string('image_url');
+    table.string('image_url').defaultTo('https://png.pngtree.com/png-vector/20190805/ourlarge/pngtree-account-avatar-user-abstract-circle-background-flat-color-icon-png-image_1650938.jpg');
     table.boolean('active');
   });
 };

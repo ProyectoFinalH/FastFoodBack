@@ -50,12 +50,20 @@ const sendOrderConfirmationEmail = async (to, orderDetails) => {
 
 const sendWelcomeEmail = async (to, username) => {
   const transporter = await createTransporter();
+  const imageUrl = 'https://res.cloudinary.com/dw5j9zsag/image/upload/v1718565097/hsnv7ezxocvcdbwl3ed3.png';
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to,
     subject: 'Bienvenido a Nuestra Aplicación',
     text: `Hola ${username}, bienvenido a nuestra aplicación.`,
-    html: `<p>Hola <strong>${username}</strong>, bienvenido a nuestra aplicación.</p>`
+    html: `
+      <div style="font-family: Arial, sans-serif; color: #333;">
+        <h2 style="color: #000000;">Hola <strong>${username}</strong>, bienvenido a nuestra aplicación.</h2>
+        <img src="${imageUrl}" alt="Welcome" style="width: 100%; max-width: 1200px; height: auto;">
+        
+        
+      </div>
+    `
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
@@ -67,9 +75,27 @@ const sendWelcomeEmail = async (to, username) => {
   });
 };
 
+const sendUserUpdateEmail = async (to, username) => {
+  const transporter = await createTransporter();
+  const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to,
+      subject: 'Actualización de Datos de Usuario',
+      text: `Hola ${username}, tus datos han sido actualizados en nuestra aplicación.`,
+      html: `<p>Hola <strong>${username}</strong>, tus datos han sido actualizados en nuestra aplicación.</p>`
+  };
 
+  transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+          console.error('Error sending user update email:', error);
+      } else {
+          console.log('User update email sent:', info.response);
+      }
+  });
+};
 
 module.exports = {
   sendOrderConfirmationEmail,
-  sendWelcomeEmail
+  sendWelcomeEmail,
+  sendUserUpdateEmail
 };

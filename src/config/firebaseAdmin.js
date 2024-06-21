@@ -1,4 +1,5 @@
 const admin = require('firebase-admin');
+require('dotenv').config(); // Cargar las variables de entorno desde el archivo .env
 
 if (!admin.apps.length) {
   admin.initializeApp({
@@ -11,5 +12,6 @@ if (!admin.apps.length) {
 }
 
 module.exports = admin;
+
 
 
