@@ -3,7 +3,7 @@ const jwt=require('jsonwebtoken')
 
 // Función para generar un token JWT
 function generateToken(user) {
-    return jwt.sign({ id: user.id, name: user.name,email: user.email, role_id:user.role_id}, process.env.JWT_SECRET, {
+    return jwt.sign({ id: user.id, name: user.name,email: user.email, role_id:user.role_id, state:user.active}, process.env.JWT_SECRET, {
       expiresIn: '1h',
     });
   }
