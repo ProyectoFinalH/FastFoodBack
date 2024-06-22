@@ -21,10 +21,10 @@ function ensureAuthenticated(req, res, next) {
 // Middleware para verificar si es un consumidor
 function ensureUser(req, res, next) {
   ensureAuthenticated(req, res, () => {
-    if (req.user && req.user.role_id === 1) { // Autoriza al consumidor
+    if (req.user && (req.user.role_id === 1 || req.user.role_id === 2 || req.user.role_id === 3)) { // Autoriza al consumidor, restaurante y superadmin
       return next();
     }
-    res.status(403).json({ message: 'No tiene acceso a esta pagina' }); // No es el consumidor
+    res.status(403).json({ message: 'No tiene acceso a esta pagina' }); // No es el consumidor, ni restaurante, ni superadmin
   });
 }
 

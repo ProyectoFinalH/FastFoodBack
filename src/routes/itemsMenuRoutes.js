@@ -18,16 +18,16 @@ const itemsMenuRouter = Router();
 
 itemsMenuRouter.get("/search",searchItemsMenuHandler);
 //itemsMenuRouter.get("/restaurant/:id",ensureRestaurant,getItemsMenuRestaurantHandler);//**ruta debe ir asi: /?token=${token} */
-itemsMenuRouter.get("/restaurant/:id",getItemsMenuRestaurantHandler)
+itemsMenuRouter.get("/restaurant/:id",ensureRestaurant,getItemsMenuRestaurantHandler)
 itemsMenuRouter.get("/home/:id",getItemsMenuHomeHandler)
 itemsMenuRouter.get("/",getItemsMenuHandler);
 itemsMenuRouter.get("/all",ensureAdmin,getAllItemsMenuHandler);
 //itemsMenuRouter.get("/all",getAllItemsMenuHandler);
 itemsMenuRouter.get("/:id",getItemDetailMenuHandler);
-itemsMenuRouter.put("/:id",parser.single('image_url'),putItemMenuHandler);
-itemsMenuRouter.post("/create", parser.single('image_url'), createItemMenuHandler);
-itemsMenuRouter.put("/delete/:id",deleteItemMenuHandler);
-itemsMenuRouter.put("/restore/:id",restoreItemMenuHandler);
+itemsMenuRouter.put("/:id",parser.single('image_url'),ensureRestaurant,putItemMenuHandler);
+itemsMenuRouter.post("/create", parser.single('image_url'),ensureRestaurant, createItemMenuHandler);
+itemsMenuRouter.put("/delete/:id",ensureRestaurant,deleteItemMenuHandler);
+itemsMenuRouter.put("/restore/:id",ensureRestaurant,restoreItemMenuHandler);
 
 
 
