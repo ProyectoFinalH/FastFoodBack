@@ -13,7 +13,19 @@ exports.seed = async function(knex) {
         active: true,
         rating: 0 // Valor inicial para rating
       },
-      // Puedes añadir más restaurantes aquí
+       {
+            name: 'Burger King',
+            email: 'burgerking@gmail.com',
+            password: '1234',
+            address:'calle 123',
+            phone: '12345678',
+            description:'Fast Food',
+            role_id:'2',
+            image_url:'https://seeklogo.com/images/B/burger-king-logo-C329670C79-seeklogo.com.png',
+            active:true,
+            rating: 0 // Valor inicial para rating
+        }
+
     ]);
   };
   

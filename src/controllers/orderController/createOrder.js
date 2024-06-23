@@ -1,6 +1,7 @@
 const db = require('../../db/knex');
 const { sendOrderConfirmationEmail } = require('../../config/mailer');
 
+
 const createOrder = async ({ restaurant_id, user_id, total_price, items, statusorder_id, email }) => {
   const newOrder = {
     restaurant_id,
@@ -12,6 +13,7 @@ const createOrder = async ({ restaurant_id, user_id, total_price, items, statuso
   };
 
   try {
+
     const [id] = await db('orders').insert(newOrder).returning('id');
     const record = await db('orders').where({ id }).first();
 

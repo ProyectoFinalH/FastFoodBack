@@ -11,6 +11,7 @@ const { restoreUserHandler } = require("../handlers/userHandler/restoreUser");
 
 const parser = require("../config/multer");
 const { getAllUsersHandler } = require("../handlers/userHandler/getAllUsers");
+const { ensureRestaurant, ensureUser, ensureAdmin } = require("../middleware/ensureAuth");
 
 
 
@@ -30,14 +31,14 @@ userRouter.get('/auth/google/callback',
 userRouter.post("/auth/google", loginGoogleHandler);
 
 // Otras rutas de usuario
-userRouter.get("/", getUsersHandler);
-userRouter.get("/all",getAllUsersHandler);
-userRouter.get("/:id", getDetailUserHandler);
-userRouter.put("/:id",parser.single('image_url'), putUserHandler);
+userRouter.get("/",ensureRestaurant, getUsersHandler);
+userRouter.get("/all",ensureRestaurant,getAllUsersHandler);
+userRouter.get("/:id",ensureUser, getDetailUserHandler);
+userRouter.put("/:id",parser.single('image_url'),ensureUser, putUserHandler);// revisar si la posicion del ensure esta ok??
 userRouter.post("/create", createUserHandler);
 userRouter.post("/login", loginUserHandler);
-userRouter.put("/delete/:id", deleteUserHandler);
-userRouter.put("/restore/:id", restoreUserHandler);
+userRouter.put("/delete/:id",ensureAdmin, deleteUserHandler);
+userRouter.put("/restore/:id",ensureAdmin, restoreUserHandler);
 
 module.exports = userRouter;
 
