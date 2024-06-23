@@ -9,7 +9,11 @@
       database: 'fast_food_app',
       port: '5432',
    
-3. configurar sus user y pass de acceso postgres en el archivo .env
+3. Configurar su user y pass de acceso postgres en el archivo .env
+
+4. Ejecutar npm i (para descargar dependencias nuevas si las hay)
    
-4. ejecutar npm run migrate(esto para ejecutar las tablas en la base de datos)
+4. Ejecutar npm run migrate (esto para crear las tablas en la base de datos)
+
+5. Ejecutar npm run datastart (esto para insertar data inicial en la base de datos)
 

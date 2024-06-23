@@ -21,7 +21,14 @@ module.exports = {
   },
   production: {
     client: 'postgresql',
-    connection: process.env.DATABASE_URL,
+    connection: {
+      host: process.env.PGHOST || 'monorail.proxy.rlwy.net',
+      port: process.env.PGPORT || 12776,
+      user: process.env.PGUSER || 'postgres',
+      password: process.env.PGPASSWORD || 'XpuflCbtPuJIJFwMurEMgUESzeaspsHw',
+      database: process.env.PGDATABASE || 'railway',
+      ssl: { rejectUnauthorized: false }
+    },
     migrations: {
       directory: path.join(__dirname, 'migrations'),
     },

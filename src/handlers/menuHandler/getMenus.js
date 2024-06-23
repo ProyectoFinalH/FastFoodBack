@@ -2,6 +2,7 @@ const { getMenus } = require("../../controllers/menuController/getMenus");
 
 const getMenusHandler=async(req,res)=>{
 
+
     try {
         const menus=await getMenus();
         menus.length

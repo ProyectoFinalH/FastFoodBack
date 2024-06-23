@@ -2,10 +2,10 @@ const { createOrder } = require("../../controllers/orderController/createOrder")
 
 const createOrderHandler=async(req,res)=>{
 
-    const{user_id,restaurant_id,total_price,items}=req.body;
+    const{restaurant_id,user_id,total_price,items}=req.body;
 
     try {
-        const response=await createOrder({user_id,restaurant_id,total_price,items});
+        const response=await createOrder({restaurant_id,user_id,total_price,items});
         response===false
         ?res.status(400).json("No fue posible crear la orden")
         :res.status(200).json(response)
