@@ -1,11 +1,13 @@
 exports.up = function(knex) {
   return knex.schema.createTable('comments', table => {
     table.increments('id').primary();
-    table.integer('user_id').unsigned().references('id').inTable('users');
-    table.integer('restaurant_id').unsigned().references('id').inTable('restaurants');
-    table.text('content').notNullable();
-    table.timestamp('created_at').defaultTo(knex.fn.now());
-    table.boolean('active');
+    table.integer('user_id').unsigned().notNullable().references('id').inTable('users');
+    table.integer('restaurant_id').unsigned().notNullable().references('id').inTable('restaurants');
+    table.integer('order_id').unsigned().notNullable().references('id').inTable('orders');
+    table.text('comment').notNullable();
+    table.integer('rating').unsigned().notNullable();
+    table.boolean('active').defaultTo(true);
+    table.timestamps(true, true);
   });
 };
 

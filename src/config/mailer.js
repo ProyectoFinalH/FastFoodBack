@@ -30,20 +30,50 @@ async function createTransporter() {
   return transporter;
 }
 
-const sendOrderConfirmationEmail = async (to, orderDetails) => {
-  const transporter = await createTransporter();
+const sendOrderConfirmationEmail = async (to, username, orderDetails) => {
+  const itemsHtml = orderDetails.items.map(item => `
+    <tr>
+      <td style="padding: 8px; border: 1px solid #ddd;">${item.product_name}</td>
+      <td style="padding: 8px; border: 1px solid #ddd;">${item.quantity}</td>
+      <td style="padding: 8px; border: 1px solid #ddd;">$${item.price.toFixed(2)}</td>
+      <td style="padding: 8px; border: 1px solid #ddd;">$${(item.price * item.quantity).toFixed(2)}</td>
+    </tr>
+  `).join('');
+
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to,
-    subject: 'Order Confirmation',
-    text: `Thank you for your order!\n\n${orderDetails}`
+    subject: 'Confirmación de Pedido',
+    html: `
+      <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
+        <h2 style="color: #4CAF50;">Confirmación de Pedido para ${username}</h2>
+        <p>¡Gracias por tu pedido!</p>
+        <h3>Detalles del Pedido</h3>
+        <table style="width: 100%; border-collapse: collapse;">
+          <thead>
+            <tr style="background-color: #f2f2f2;">
+              <th style="padding: 8px; border: 1px solid #ddd;">Producto</th>
+              <th style="padding: 8px; border: 1px solid #ddd;">Cantidad</th>
+              <th style="padding: 8px; border: 1px solid #ddd;">Precio</th>
+              <th style="padding: 8px; border: 1px solid #ddd;">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${itemsHtml}
+          </tbody>
+        </table>
+        <p style="margin-top: 20px;"><strong>Precio Total:</strong> $${orderDetails.total_price.toFixed(2)}</p>
+        <p style="margin-top: 20px;">Si tienes alguna pregunta, no dudes en <a href="mailto:${process.env.EMAIL_USER}">contactarnos</a>.</p>
+      </div>
+    `
   };
 
+  const transporter = await createTransporter();
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      console.error('Error sending email:', error);
+      console.error('Error al enviar el correo:', error);
     } else {
-      console.log('Email sent:', info.response);
+      console.log('Correo enviado:', info.response);
     }
   });
 };
@@ -60,17 +90,15 @@ const sendWelcomeEmail = async (to, username) => {
       <div style="font-family: Arial, sans-serif; color: #333;">
         <h2 style="color: #000000;">Hola <strong>${username}</strong>, bienvenido a nuestra aplicación.</h2>
         <img src="${imageUrl}" alt="Welcome" style="width: 100%; max-width: 1200px; height: auto;">
-        
-        
       </div>
     `
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      console.error('Error sending welcome email:', error);
+      console.error('Error al enviar el correo de bienvenida:', error);
     } else {
-      console.log('Welcome email sent:', info.response);
+      console.log('Correo de bienvenida enviado:', info.response);
     }
   });
 };
@@ -78,19 +106,19 @@ const sendWelcomeEmail = async (to, username) => {
 const sendUserUpdateEmail = async (to, username) => {
   const transporter = await createTransporter();
   const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to,
-      subject: 'Actualización de Datos de Usuario',
-      text: `Hola ${username}, tus datos han sido actualizados en nuestra aplicación.`,
-      html: `<p>Hola <strong>${username}</strong>, tus datos han sido actualizados en nuestra aplicación.</p>`
+    from: process.env.EMAIL_USER,
+    to,
+    subject: 'Actualización de Datos de Usuario',
+    text: `Hola ${username}, tus datos han sido actualizados en nuestra aplicación.`,
+    html: `<p>Hola <strong>${username}</strong>, tus datos han sido actualizados en nuestra aplicación.</p>`
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-          console.error('Error sending user update email:', error);
-      } else {
-          console.log('User update email sent:', info.response);
-      }
+    if (error) {
+      console.error('Error al enviar el correo de actualización de datos de usuario:', error);
+    } else {
+      console.log('Correo de actualización de datos de usuario enviado:', info.response);
+    }
   });
 };
 
@@ -98,6 +126,4 @@ module.exports = {
   sendOrderConfirmationEmail,
   sendWelcomeEmail,
   sendUserUpdateEmail
-
 };
-
