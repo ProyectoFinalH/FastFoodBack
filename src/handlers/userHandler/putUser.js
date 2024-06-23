@@ -19,6 +19,7 @@ const putUserHandler=async(req,res)=>{
         ?res.status(400).json("Ya existe un usuario con este correo o hubo un error al actualizarlo")
         :res.status(200).json(response)
     } catch (error) {
+        console.log(error);
         res.status(400).json({error:error.message});
     }
     
