@@ -21,7 +21,18 @@ const createComment = async (req, res) => {
       active: true // Si decides usar el campo active
     }).returning('*');
 
-    res.status(201).json(newComment);
+    // Calcular el nuevo rating promedio del restaurante
+    const ratings = await db('comments')
+      .where({ restaurant_id, active: true })
+      .avg('rating as average_rating')
+      .first();
+
+    const averageRating = ratings.average_rating ? parseFloat(ratings.average_rating).toFixed(2) : null;
+
+    // Actualizar el rating promedio en la tabla de restaurantes
+    await db('restaurants').where({ id: restaurant_id }).update({ rating: averageRating });
+
+    res.status(201).json({ newComment, averageRating });
   } catch (error) {
     console.error('Error creating comment:', error);
     res.status(500).json({ error: 'Error creating comment' });
@@ -29,6 +40,8 @@ const createComment = async (req, res) => {
 };
 
 module.exports = createComment;
+
+
 
 
 

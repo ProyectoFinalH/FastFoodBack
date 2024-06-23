@@ -3,20 +3,22 @@ require('dotenv').config(); // Asegúrate de cargar las variables de entorno
 const { sendOrderConfirmationEmail } = require('./src/config/mailer');
 
 const testSendOrderConfirmationEmail = async () => {
-  const to = 'miller7villa@gmail.com'; // Reemplaza con la dirección de correo electrónico de destino
-  const orderDetails = `
-    Order ID: 12345
-    Total Price: $30.00
-    Items:
-    - Product ID: 1, Quantity: 2
-    - Product ID: 2, Quantity: 1
-  `;
+  const to = 'millerj5villa@gmail.com'; // Reemplaza con la dirección de correo electrónico de destino
+  const customerName = 'Miller Villamizar'; // Nombre del cliente
+  const orderDetails = {
+    total_price: 30.00,
+    items: [
+      { product_name: 'Hamburguesa', price: 10.00, quantity: 2 },
+      { product_name: 'Papas Fritas', price: 5.00, quantity: 1 },
+      { product_name: 'Refresco', price: 2.50, quantity: 2 }
+    ]
+  };
 
   try {
-    await sendOrderConfirmationEmail(to, orderDetails);
-    console.log('Test email sent successfully.');
+    await sendOrderConfirmationEmail(to, customerName, orderDetails);
+    console.log('Correo de prueba enviado exitosamente.');
   } catch (error) {
-    console.error('Error sending test email:', error);
+    console.error('Error al enviar el correo de prueba:', error);
   }
 };
 
