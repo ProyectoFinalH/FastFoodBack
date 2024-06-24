@@ -1,4 +1,4 @@
-const { getComments } = require("../../controllers/commentController/getComments");
+const  getComments  = require("../../controllers/commentController/getComments");
 
 const getCommentsHandler = async (req, res) => {
   const { restaurant_id } = req.params;

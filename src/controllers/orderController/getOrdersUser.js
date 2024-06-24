@@ -11,7 +11,7 @@ const getOrdersUser=async(id)=>{
     )
     .where('orders.user_id',id)
     .andWhere('orders.active',true)
-    .orderBy('id','asc');
+    .orderBy('id','desc');
     return infoDB;
 
 };
