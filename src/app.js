@@ -5,6 +5,7 @@ const morgan = require("morgan");
 const mainRoutes = require("./routes/mainRoutes");
 const itemsMenuRoutes = require("./routes/itemsMenuRoutes"); // Asegúrate de que la ruta sea correcta
 const userRoutes = require("./routes/userRoutes"); // Importa las rutas de usuario
+const commentRoutes = require("./routes/commentRoutes"); // Importa las rutas de comentarios
 const cors = require("cors");
 const app = express();
 const path = require('path');
@@ -16,8 +17,6 @@ app.use((req, res, next) => {
   res.setHeader('ngrok-skip-browser-warning', 'true');
   next();
 });
-
-
 
 app.use(cors()); // Políticas de seguridad CORS
 app.use(express.json()); // Para que el server pueda leer JSON
@@ -36,7 +35,7 @@ require('./config/googleAuth');
 app.use(mainRoutes); // Aquí inicia el router principal
 app.use('/api/menuitems', itemsMenuRoutes); // Ruta para manejar ítems del menú
 app.use('/api/users', userRoutes); // Ruta para manejar usuarios y autenticación
-
+app.use('/api/comments', commentRoutes); // Ruta para manejar comentarios
 
 app.use((req, res, next) => {// Para crear la preferencia de Mercado pago
 	res.setHeader(
@@ -44,7 +43,6 @@ app.use((req, res, next) => {// Para crear la preferencia de Mercado pago
 	  "script-src 'self' 'https://www.mercadopago.com.ar';"
 	);
 	next();
-  });
-  
+});
 
 module.exports = app;
