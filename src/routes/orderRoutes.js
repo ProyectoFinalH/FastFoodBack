@@ -23,7 +23,7 @@ orderRouter.put("/:id",ensureRestaurant,putOrderHandler);
 orderRouter.post("/create",ensureUser,createOrderHandler);
 orderRouter.put("/delete/:id",ensureRestaurant,deleteOrderHandler);
 orderRouter.put("/restore/:id",ensureRestaurant,restoreOrderHandler);
-orderRouter.put("/status/:id",ensureUser,putStatusOrderHandler);
+orderRouter.put("/status/:id",putStatusOrderHandler);
 
 
 module.exports=orderRouter;
