@@ -13,8 +13,12 @@ const putUser = async ({ id, username, email, password, telefono, image_url }) =
     const { record, updated } = await findOrUpdate('users', { id: id }, { email: email }, User);
 
     if (updated === true) {
-        //await sendUserUpdateEmail(email, username);
-
+        try {
+            await sendUserUpdateEmail(email, username);
+        } catch (error) {
+            console.log(error);
+        }
+        
         return record;
     } else {
         return false;

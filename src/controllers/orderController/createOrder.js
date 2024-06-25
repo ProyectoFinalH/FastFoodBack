@@ -2,20 +2,20 @@ const db = require('../../db/knex');
 const { sendOrderConfirmationEmail } = require('../../config/mailer');
 
 
-const createOrder = async ({ restaurant_id, user_id, total_price, items, statusorder_id, email }) => {
+const createOrder = async ({ restaurant_id, user_id, total_price, items }) => {
   const newOrder = {
     restaurant_id,
     user_id,
     total_price,
-    items,
-    statusorder_id,
+    items:JSON.stringify(items),
+    statusorder_id:1,
     active: true,
   };
 
   try {
 
     const [id] = await db('orders').insert(newOrder).returning('id');
-    const record = await db('orders').where({ id }).first();
+    const record = await db('orders').where(id).first();
 
     if (record) {
       const orderDetails = `
@@ -25,8 +25,8 @@ const createOrder = async ({ restaurant_id, user_id, total_price, items, statuso
       `;
 
       // Enviar correo de confirmación de pedido
-      await sendOrderConfirmationEmail(email, orderDetails);
-      console.log('Order confirmation email sent.');
+      //await sendOrderConfirmationEmail(email, orderDetails);
+      //console.log('Order confirmation email sent.');
 
       return record;
     } else {

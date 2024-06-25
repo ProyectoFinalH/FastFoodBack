@@ -20,8 +20,12 @@ const createUser = async ({ username, email, password,telefono,image_url }) => {
   const { record, created } = await findOrCreate('users', emailNewUser, newUser);
 
   if (created) {
+    try {
     // Enviar correo de bienvenida
-    sendWelcomeEmail(email, username);
+    await sendWelcomeEmail(email, username);      
+    } catch (error) {
+      console.log(error);
+    }
     return record;
   } else {
     return false;

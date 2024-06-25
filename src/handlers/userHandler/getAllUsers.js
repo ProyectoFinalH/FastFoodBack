@@ -7,7 +7,7 @@ const getAllUsersHandler=async(req,res)=>{
         const users=await getAllUsers();
         users.length
         ?res.status(200).json(users)
-        :res.status(400).json("No hay usuarios registrados");
+        :res.status(404).json("No hay usuarios registrados");
     } catch (error) {
         res.status(400).json({error:error.message});
     }

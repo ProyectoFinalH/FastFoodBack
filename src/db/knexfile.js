@@ -7,7 +7,7 @@ module.exports = {
     connection: {
       host: process.env.DB_HOST || 'localhost',
       user: process.env.DB_USER || 'postgres',
-      password: process.env.DB_PASSWORD || 'admin',
+      password: process.env.DB_PASSWORD || 'Temporaltemporal1',
       database: process.env.DB_NAME || 'fast_food_app',
       port: process.env.DB_PORT || '5432',
       ssl: false
