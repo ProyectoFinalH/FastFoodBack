@@ -30,8 +30,14 @@ const loginGoogle = async (token) => {
       const [userId] = await db('users').insert(newUser).returning('id');
       user = { ...newUser, id: userId[0] }; // Asegúrate de obtener solo el valor del id
        // Enviar correo de bienvenida
-       console.log('Enviando correo de bienvenida a:', email); 
-       //sendWelcomeEmail(email, name);
+       try {
+        console.log('Enviando correo de bienvenida a:', email); 
+        await sendWelcomeEmail(email, name);
+        
+       } catch (error) {
+        console.log(error);
+       }
+       
  
     }
 

@@ -8,7 +8,7 @@ const getCategoriesHomeHandler=async(req,res)=>{
         const categories=await getCategoriesHome(id);
         categories.length
         ?res.status(200).json(categories)
-        :res.status(400).json("No hay categorias registradas");
+        :res.status(404).json("No hay categorias registradas");
     } catch (error) {
         res.status(400).json({error:error.message});
     }

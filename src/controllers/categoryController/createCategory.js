@@ -8,7 +8,12 @@ const createCategory=async({restaurant_id,name})=>{
         active:true
     }
 
-    const {record,created}=await findOrCreate('categories',newCategory,newCategory);
+    const nameNewCategory={
+        name:name,
+        restaurant_id:restaurant_id  
+    }
+
+    const {record,created}=await findOrCreate('categories',nameNewCategory,newCategory);
 
     if(created){
         return record;

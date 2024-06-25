@@ -8,7 +8,8 @@ const createMenu=async({restaurant_id,name})=>{
         active:true
     }
     const nameNewMenu={
-        name:name
+        name:name,
+        restaurant_id:restaurant_id
     }
 
     const {record,created}=await findOrCreate('menus',nameNewMenu,newMenu)

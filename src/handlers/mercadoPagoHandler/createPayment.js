@@ -7,7 +7,7 @@ const createPaymentHandler = async (req, res) => {
        
         back_urls: {
             "success": "http://localhost:3000/respuestacarrito",
-            "failure": "http://localhost:3000/menu",
+            "failure": "http://localhost:3000/respuestacarrito",
         },
 		items: [
             {
