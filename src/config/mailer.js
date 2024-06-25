@@ -122,8 +122,33 @@ const sendUserUpdateEmail = async (to, username) => {
   });
 };
 
+const sendOrderRejectionEmail = async (to, username) => {
+  const mailOptions = {
+    from: process.env.EMAIL_USER,
+    to,
+    subject: 'Pedido Rechazado',
+    html: `
+      <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;">
+        <h2 style="color: #e74c3c;">Pedido Rechazado</h2>
+        <p>Hola ${username},</p>
+        <p>Tu pedido ha sido rechazado. Si tienes alguna pregunta, por favor <a href="mailto:${process.env.EMAIL_USER}">contáctanos</a>.</p>
+      </div>
+    `
+  };
+
+  const transporter = await createTransporter();
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error('Error al enviar el correo de rechazo:', error);
+    } else {
+      console.log('Correo de rechazo enviado:', info.response);
+    }
+  });
+};
+
 module.exports = {
   sendOrderConfirmationEmail,
   sendWelcomeEmail,
-  sendUserUpdateEmail
+  sendUserUpdateEmail,
+  sendOrderRejectionEmail
 };

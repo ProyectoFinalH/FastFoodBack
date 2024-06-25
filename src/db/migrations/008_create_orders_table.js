@@ -8,10 +8,10 @@ exports.up = function(knex) {
     table.timestamp('order_date').defaultTo(knex.fn.now());
     table.integer('statusorder_id').unsigned().references('id').inTable('statusorder');
     table.boolean('active');
+    table.boolean('email_sent').defaultTo(false); // Nuevo campo para rastrear si se ha enviado el correo
   });
 };
 
 exports.down = function(knex) {
   return knex.schema.dropTableIfExists('orders');
 };
-  
