@@ -7,7 +7,7 @@ const getAllOrdersHandler=async(req,res)=>{
         const response=await getAllOrders();
         response.length
         ?res.status(200).json(response)
-        :res.status(400).json("No hay ordenes registradas");
+        :res.status(404).json("No hay ordenes registradas");
     } catch (error) {
         res.status(400).json({error:error.message});
     }

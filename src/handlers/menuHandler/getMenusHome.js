@@ -8,7 +8,7 @@ const getMenusHomeHandler=async(req,res)=>{
         const menus=await getMenusHome(id);
         menus.length
         ?res.status(200).json(menus)
-        :res.status(400).json("No hay menus registrados");
+        :res.status(404).json("No hay menus registrados");
     } catch (error) {
         res.status(400).json({error:error.message});
     }

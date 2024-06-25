@@ -7,7 +7,7 @@ const getCommentsHandler = async (req, res) => {
     const response = await getComments({ restaurant_id });
     response.length
       ? res.status(200).json(response)
-      : res.status(400).json("No hay comentarios registrados");
+      : res.status(404).json("No hay comentarios registrados");
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
