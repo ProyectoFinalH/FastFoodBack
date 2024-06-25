@@ -7,8 +7,7 @@ const createOrder = async ({ restaurant_id, user_id, total_price, items }) => {
     restaurant_id,
     user_id,
     total_price,
-    //items,
-    items:JSON.stringify(items),//cambiar aca cuando mandas data usando postman
+    items:JSON.stringify(items),
     statusorder_id:1,
     active: true,
   };
