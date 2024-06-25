@@ -2,7 +2,9 @@ const db = require('../../db/knex');
 const { sendOrderConfirmationEmail } = require('../../config/mailer');
 
 
+
 const createOrder = async ({ restaurant_id, user_id, total_price, items }) => {
+
   const newOrder = {
     restaurant_id,
     user_id,

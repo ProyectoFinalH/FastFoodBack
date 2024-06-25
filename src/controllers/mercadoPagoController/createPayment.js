@@ -3,14 +3,15 @@ const mercadopago = require("../../config/mercadoPago");
 
 
 const createPayment=async(preference)=>{
-
-    const response=await mercadopago.preferences.create(preference);
     
-    if(response){
-        return response.body.id;
-    }else{
+    try {
+        const response = await mercadopago.preferences.create(preference);
+        return response.body.init_point;
+    } catch (error) {
+        console.error("Error creating payment preference:", error);
         return false;
     }
+
 		
 
 };

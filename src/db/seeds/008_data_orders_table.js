@@ -1,4 +1,5 @@
 exports.seed = async function(knex) {
+
   // Insertar nuevos registros
   await knex('orders').insert([
     { 
