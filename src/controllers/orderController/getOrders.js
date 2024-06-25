@@ -10,7 +10,7 @@ const getOrders=async()=>{
         'orders.items','orders.total_price','orders.order_date','statusorder.name as status_order','orders.active'
     )
     .where('orders.active',true)
-    .orderBy('id','asc');
+    .orderBy('id','desc');
     return infoDB;
 
 };
