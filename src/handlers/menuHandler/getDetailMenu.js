@@ -8,7 +8,7 @@ const getDetailMenuHandler=async(req,res)=>{
         const menu=await getDetailMenu(id);
         menu
         ?res.status(200).json(menu)
-        :res.status(400).json("Este menu no existe");
+        :res.status(404).json("Este menu no existe");
     } catch (error) {
         res.status(400).json({error:error.message});
     }

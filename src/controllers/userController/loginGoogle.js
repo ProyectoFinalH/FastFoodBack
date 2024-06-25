@@ -1,6 +1,14 @@
 const admin = require('../../config/firebaseAdmin');
 const db = require("../../db/knex");
 const { sendWelcomeEmail } = require('../../config/mailer');
+const jwt=require('jsonwebtoken')
+
+// Función para generar un token JWT
+function generateToken(user) {
+  return jwt.sign({ id: user.id, name:user.username, email: user.email, role_id:user.role_id, state:user.active}, process.env.JWT_SECRET, {
+    expiresIn: '1h',
+  });
+}
 
 const loginGoogle = async (token) => {
   try {
@@ -22,13 +30,22 @@ const loginGoogle = async (token) => {
       const [userId] = await db('users').insert(newUser).returning('id');
       user = { ...newUser, id: userId[0] }; // Asegúrate de obtener solo el valor del id
        // Enviar correo de bienvenida
-       console.log('Enviando correo de bienvenida a:', email); 
-       sendWelcomeEmail(email, name);
+       try {
+        console.log('Enviando correo de bienvenida a:', email); 
+        await sendWelcomeEmail(email, name);
+        
+       } catch (error) {
+        console.log(error);
+       }
+       
  
     }
 
-    // Devolver el usuario autenticado
-    return user;
+    // Devolver el usuario encriptado con token jwt
+   
+    const tokenUser =generateToken(user);
+    return tokenUser;
+
   } catch (error) {
     throw new Error('Failed to authenticate user');
   }

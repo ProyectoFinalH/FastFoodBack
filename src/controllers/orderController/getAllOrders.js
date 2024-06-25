@@ -9,7 +9,7 @@ const getAllOrders=async()=>{
     .select('orders.id','users.username as user_name','restaurants.name as restaurant_name',
         'orders.items','orders.total_price','orders.order_date','statusorder.name as status_order','orders.active'
     )
-    .orderBy('id','asc');;
+    .orderBy('id','desc');;
     return infoDB;
 
 };

@@ -13,7 +13,8 @@ const createItemMenu = async ({ restaurant_id,menu_id, category_id, name, descri
         active:true
     }
     const nameNewItemMenu={
-        name:name
+        name:name,
+        restaurant_id:restaurant_id
     }
 
     const { record, created } = await findOrCreate('menuitems', nameNewItemMenu, newItemMenu);
