@@ -10,13 +10,24 @@ const checkOrderStatusAndSendEmail = async () => {
     // Enviar correos para las órdenes aprobadas
     for (const order of approvedOrders) {
       const user = await db('users').where({ id: order.user_id }).first();
-      const items = JSON.parse(order.items);
+      
+      if (!user) {
+        console.error(`User not found for order ${order.id}`);
+        continue;
+      }
+
+      const items = typeof order.items === 'string' ? JSON.parse(order.items) : order.items;
+      if (!items || !Array.isArray(items)) {
+        console.error(`Invalid items for order ${order.id}`);
+        continue;
+      }
+
       const orderDetails = {
-        total_price: order.total_price,
+        total_price: parseFloat(order.total_price),
         items: items.map(item => ({
-          product_name: item.name,
-          price: parseFloat(item.price),
-          quantity: item.cont
+          product_name: item.name_item,
+          price: parseFloat(item.partial_price),
+          quantity: parseInt(item.quantity)
         }))
       };
 
@@ -31,6 +42,12 @@ const checkOrderStatusAndSendEmail = async () => {
 
     for (const order of rejectedOrders) {
       const user = await db('users').where({ id: order.user_id }).first();
+      
+      if (!user) {
+        console.error(`User not found for rejected order ${order.id}`);
+        continue;
+      }
+
       await sendOrderRejectionEmail(user.email, user.username);
       await db('orders').where({ id: order.id }).update({ email_sent: true });
       console.log(`Email sent for rejected order ${order.id}`);
@@ -41,3 +58,5 @@ const checkOrderStatusAndSendEmail = async () => {
 };
 
 module.exports = { checkOrderStatusAndSendEmail };
+
+
