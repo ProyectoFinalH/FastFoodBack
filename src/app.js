@@ -48,7 +48,7 @@ app.use((req, res, next) => {// Para crear la preferencia de Mercado pago
 });
 
 // Programación del cron job para verificar el estado de las órdenes y enviar correos
-cron.schedule('* * * * *', async () => {
+cron.schedule('*/30 * * * * *', async () => {
   await checkOrderStatusAndSendEmail();
 });
 
