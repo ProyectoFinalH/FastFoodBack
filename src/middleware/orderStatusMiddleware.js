@@ -9,25 +9,22 @@ const checkOrderStatusAndSendEmail = async () => {
 
     // Enviar correos para las órdenes aprobadas
     for (const order of approvedOrders) {
+      console.log('order.items:', order.items); // Agrega esta línea para depurar el valor de order.items
+      let items;
+      try {
+        items = typeof order.items === 'string' ? JSON.parse(order.items) : order.items; // Asegurar que items sea un objeto
+      } catch (parseError) {
+        console.error('Error parsing items JSON:', parseError);
+        continue; // Si hay un error al parsear, continuar con la siguiente orden
+      }
+
       const user = await db('users').where({ id: order.user_id }).first();
-      
-      if (!user) {
-        console.error(`User not found for order ${order.id}`);
-        continue;
-      }
-
-      const items = typeof order.items === 'string' ? JSON.parse(order.items) : order.items;
-      if (!items || !Array.isArray(items)) {
-        console.error(`Invalid items for order ${order.id}`);
-        continue;
-      }
-
       const orderDetails = {
         total_price: parseFloat(order.total_price),
         items: items.map(item => ({
-          product_name: item.name_item,
-          price: parseFloat(item.partial_price),
-          quantity: parseInt(item.quantity)
+          product_name: item.name || item.name_item, // Ajustar según la estructura de los datos
+          price: parseFloat(item.price || item.partial_price),
+          quantity: parseInt(item.cont || item.quantity, 10)
         }))
       };
 
@@ -42,12 +39,6 @@ const checkOrderStatusAndSendEmail = async () => {
 
     for (const order of rejectedOrders) {
       const user = await db('users').where({ id: order.user_id }).first();
-      
-      if (!user) {
-        console.error(`User not found for rejected order ${order.id}`);
-        continue;
-      }
-
       await sendOrderRejectionEmail(user.email, user.username);
       await db('orders').where({ id: order.id }).update({ email_sent: true });
       console.log(`Email sent for rejected order ${order.id}`);
