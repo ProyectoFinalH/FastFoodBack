@@ -7,6 +7,8 @@ const itemsMenuRoutes = require("./routes/itemsMenuRoutes"); // Asegúrate de qu
 const userRoutes = require("./routes/userRoutes"); // Importa las rutas de usuario
 const commentRoutes = require("./routes/commentRoutes"); // Importa las rutas de comentarios
 const cors = require("cors");
+const cron = require('node-cron');
+const { checkOrderStatusAndSendEmail } = require('./middleware/orderStatusMiddleware'); // Importa el middleware
 const app = express();
 const path = require('path');
 
@@ -43,6 +45,11 @@ app.use((req, res, next) => {// Para crear la preferencia de Mercado pago
 	  "script-src 'self' 'https://www.mercadopago.com.ar';"
 	);
 	next();
+});
+
+// Programación del cron job para verificar el estado de las órdenes y enviar correos
+cron.schedule('*/30 * * * * *', async () => {
+  await checkOrderStatusAndSendEmail();
 });
 
 module.exports = app;

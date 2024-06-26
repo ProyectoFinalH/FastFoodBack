@@ -2,13 +2,16 @@ const db = require('../../db/knex');
 const { sendOrderConfirmationEmail } = require('../../config/mailer');
 
 
+
+
 const createOrder = async ({ restaurant_id, user_id, total_price, items }) => {
+
   const newOrder = {
     restaurant_id,
     user_id,
     total_price,
     items:JSON.stringify(items),
-    statusorder_id:1,
+    statusorder_id:1,//Status Registrado
     active: true,
   };
 
@@ -25,8 +28,10 @@ const createOrder = async ({ restaurant_id, user_id, total_price, items }) => {
       `;
 
       // Enviar correo de confirmación de pedido
-      //await sendOrderConfirmationEmail(email, orderDetails);
-      //console.log('Order confirmation email sent.');
+
+      // await sendOrderConfirmationEmail(email, orderDetails);
+      // console.log('Order confirmation email sent.');
+
 
       return record;
     } else {
