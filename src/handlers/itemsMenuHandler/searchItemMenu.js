@@ -8,7 +8,7 @@ const searchItemsMenuHandler=async(req,res)=>{
         const response=await SearchItemMenu(name);
         response.length
         ?res.status(200).json(response)
-        :res.status(400).json("No hay items registrados con ese nombre");
+        :res.status(404).json("No hay items registrados con ese nombre");
     } catch (error) {
         res.status(400).json({error:error.message});
     }

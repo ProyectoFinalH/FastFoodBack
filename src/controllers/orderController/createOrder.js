@@ -3,6 +3,7 @@ const { sendOrderConfirmationEmail } = require('../../config/mailer');
 
 
 
+
 const createOrder = async ({ restaurant_id, user_id, total_price, items }) => {
 
   const newOrder = {
@@ -27,8 +28,10 @@ const createOrder = async ({ restaurant_id, user_id, total_price, items }) => {
       `;
 
       // Enviar correo de confirmación de pedido
+
       // await sendOrderConfirmationEmail(email, orderDetails);
       // console.log('Order confirmation email sent.');
+
 
       return record;
     } else {

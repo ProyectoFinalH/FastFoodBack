@@ -9,7 +9,7 @@ const getDetailRestaurantHandler=async(req,res)=>{
         const response=await getDetailRestaurant(id);
         response
         ?res.status(200).json(response)
-        :res.status(400).json("Este restaurante no existe");
+        :res.status(404).json("Este restaurante no existe");
     } catch (error) {
         res.status(400).json({error:error.message});
     }
