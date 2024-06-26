@@ -6,8 +6,10 @@ const createPaymentHandler = async (req, res) => {
     const preference = {
        
         back_urls: {
-            "success": "http://localhost:3000/respuestacarrito",
-            "failure": "http://localhost:3000/respuestacarrito",
+            // "success": "http://localhost:3000/respuestacarrito",
+            // "failure": "http://localhost:3000/respuestacarrito",
+            "success": "https://fast-food-front-deploy.vercel.app/respuestacarrito",
+            "failure": "https://fast-food-front-deploy.vercel.app/respuestacarrito",
         },
 		items: [
             {
