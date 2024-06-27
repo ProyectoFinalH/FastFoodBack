@@ -4,12 +4,17 @@ const createCommentHandler = require("../handlers/commentHandler/createComment")
 const updateCommentStatusHandler = require("../handlers/commentHandler/updateCommentStatus");
 const { authenticateFirebaseToken } = require('../middleware/auth');
 const authorize = require('../middleware/authorize');
-const { ensureUser, ensureRestaurant } = require("../middleware/ensureAuth");
+const { ensureUser, ensureRestaurant, ensureAdmin } = require("../middleware/ensureAuth");
+const { getAllCommentsHandler } = require("../handlers/commentHandler/getAllComments");
 
 const commentRouter = Router();
 
+// Ruta para obtener todos los comentarios
+commentRouter.get("/all", getAllCommentsHandler);
+
 // Ruta para obtener comentarios de un restaurante específico
 commentRouter.get("/:restaurant_id", getCommentsHandler);
+
 
 // Ruta para crear un nuevo comentario
 //commentRouter.post("/", authenticateFirebaseToken, createCommentHandler);
